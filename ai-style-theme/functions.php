@@ -122,15 +122,15 @@ function ai_style_theme_customize_register( $wp_customize ) {
     // Homepage Sections
     $wp_customize->add_section( 'hp_hero', array('title' => '01. Hero', 'panel' => 'hp_panel') );
     $add_hsc('hero_top', 'Top Bar', 'hp_hero', 'Operating in 72 Countries  |  102 Global Partners');
-    $add_hsc('hero_title', 'Title', 'hp_hero', 'We Are Your<br>AI Department.', 'wp_kses_post');
-    $add_hsc('hero_sub', 'Subtitle', 'hp_hero', 'We design, build, and deploy AI Departments that scale your business without scaling your headcount.', 'textarea');
+    $add_hsc('hero_title', 'Title', 'hp_hero', 'WE ARE YOUR<br>AI DEPARTMENT.', 'wp_kses_post');
+    $add_hsc('hero_sub', 'Subtitle', 'hp_hero', 'We design, build, and deploy AI Departments that scale your business without scaling your headcount. Done for you. Running in weeks.', 'textarea');
     $add_hsc('hero_btn', 'Btn Text', 'hp_hero', 'Book a Strategy Call');
 
     $wp_customize->add_section( 'hp_marquee', array('title' => '02. Marquee', 'panel' => 'hp_panel') );
     $add_hsc('mq_text', 'Content', 'hp_marquee', 'AI Departments ✦ AI Employees ✦ Custom AI Projects ✦ AI Workflows ✦ AI SEO — AIO ✦ Tool Activation ✦ AI Training ✦ AI Yourself ✦ 72 Countries ✦ Done For You ✦ Enterprise to Solopreneur', 'textarea');
 
     $wp_customize->add_section( 'hp_who', array('title' => '03. Who We Are', 'panel' => 'hp_panel') );
-    $add_hsc('who_title', 'Title', 'hp_who', 'Who Is The AI Agency Group');
+    $add_hsc('who_title', 'Title', 'hp_who', 'WHO IS THE AI AGENCY GROUP');
     $add_hsc('who_text', 'Text', 'hp_who', 'The AI Agency Group is a global AI infrastructure and implementation firm that builds AI departments and AI employees that replace work, reduce costs, and increase output across your business. With 102 partners spread out all around the world, we serve companies of all sizes all over the globe, from solopreneurs to enterprise organizations and government.', 'textarea');
 
     $wp_customize->add_section( 'hp_div', array('title' => '04. Training Division', 'panel' => 'hp_panel') );
@@ -180,12 +180,12 @@ function ai_style_theme_customize_register( $wp_customize ) {
     }
 
     $wp_customize->add_section( 'hp_scale', array('title' => '08. Scale', 'panel' => 'hp_panel') );
-    $add_hsc('scale_title', 'Title', 'hp_scale', 'Every Level. Every Scale.');
+    $add_hsc('scale_title', 'Title', 'hp_scale', "EVERY LEVEL.\nEVERY SCALE.", 'wp_kses_post');
     $scale_defaults = array(
-        1 => array('t' => 'Solopreneur', 'd' => 'Maximum Leverage. You do not need a team. You need AI working for you around the clock. We build your personal AI department.'),
-        2 => array('t' => 'Entrepreneur', 'd' => 'Scale Without Overhead. You are growing. Hiring is expensive and slow. We build the AI layer that scales with your revenue.'),
-        3 => array('t' => 'Enterprise', 'd' => 'Transform the Operation. You have the infrastructure. We bring the intelligence. We deploy AI departments across divisions.'),
-        4 => array('t' => 'Government', 'd' => 'Public Sector AI. We build AI infrastructure for public sector organizations. Streamlined operations, reduced costs, and faster service.')
+        1 => array('t' => 'Maximum Leverage', 'd' => 'Solopreneur. You do not need a team. You need AI working for you around the clock. We build your personal AI department so you operate like a company ten times your size.'),
+        2 => array('t' => 'Scale Without Overhead', 'd' => 'Entrepreneur. You are growing. Hiring is expensive and slow. We build the AI layer that scales with your revenue without scaling your payroll. Grow smarter, not bigger.'),
+        3 => array('t' => 'Transform the Operation', 'd' => 'Enterprise. You have the infrastructure. We bring the intelligence. We deploy AI departments across divisions, automate complex workflows, and build the systems that keep you ahead.'),
+        4 => array('t' => 'Public Sector AI', 'd' => 'Government. We build AI infrastructure for public sector organizations. Streamlined operations, reduced costs, and faster service delivery. AI built for accountability, security, and scale.')
     );
     for($j=1;$j<=4;$j++) {
         $add_hsc("scale_t_$j", "Scale $j Title", 'hp_scale', $scale_defaults[$j]['t']);
@@ -194,18 +194,18 @@ function ai_style_theme_customize_register( $wp_customize ) {
 
     $wp_customize->add_section( 'hp_bio', array('title' => '09. Founder Bio', 'panel' => 'hp_panel') );
     $add_hsc('bio_img', 'Bio Image', 'hp_bio', '', 'image');
-    $add_hsc('bio_name', 'Name', 'hp_bio', 'JT FOXX');
-    $add_hsc('bio_quote', 'Quote', 'hp_bio', '"Business is War. AI is the New Weapon."');
-    $add_hsc('bio_text', 'Bio Text', 'hp_bio', 'JT Foxx is a global entrepreneur, investor, and one of the most sought-after voices in business today. He has built companies across multiple industries, conducted 100+ interviews with Hollywood A-listers, celebrities, and billionaires, and spoken on stage in countries across every continent. He is the best-selling author of three books, including Business is War: AI is the New Weapon.', 'textarea');
+    $add_hsc('bio_name', 'Name', 'hp_bio', "WHO IS\nJT FOXX.", 'wp_kses_post');
+    $add_hsc('bio_quote', 'Quote', 'hp_bio', '"BUSINESS IS WAR. AI IS THE NEW WEAPON."');
+    $add_hsc('bio_text', 'Bio Text', 'hp_bio', "JT Foxx is a global entrepreneur, investor, and one of the most sought-after voices in business today. He has built companies across multiple industries, conducted 100+ interviews with Hollywood A-listers, celebrities, and billionaires, and spoken on stage in countries across every continent.\n\nHe is the best-selling author of three books, including Business is War: AI is the New Weapon — the definitive guide to using AI as a competitive weapon in business.\n\nAs Founding Managing Partner of AI Agency Group, JT brings the operating experience, global network, and investor mindset that separates this firm from every other AI agency on the planet.\n\nHe does not just understand AI. He understands what businesses need to win. Revenue. Margin. Speed. Execution. That is what every system we build is designed around.", 'textarea');
 
     $wp_customize->add_section( 'hp_test', array('title' => '10. Testimonials', 'panel' => 'hp_panel') );
     $add_hsc('test_title', 'Title', 'hp_test', 'Real Businesses. Real Results.');
 
     $test_defaults = array(
-        1 => array('n' => 'Jeff', 'q' => 'The brain is at your fingertips all the time. The strategic business AI has become a crucial business asset that consistently saves me time.'),
-        2 => array('n' => 'Gates', 'q' => 'Pays for itself in the first 30 days! The accuracy is like nothing I’ve ever seen. From contracts, to executed plans to succeed. It’s a must have.'),
-        3 => array('n' => 'Claire', 'q' => 'Confidence with data-driven customer disputes. Using its strategic insights, we clarified that our pricing reflects a robust business model.'),
-        4 => array('n' => 'Steve', 'q' => 'Simplicity, Efficiency and Cost-effectiveness! It’s precise NDA reviews have minimised my legal requirements and costs.')
+        1 => array('n' => 'JEFF', 'q' => "The strategic business AI has become a crucial business asset that consistently saves me time by efficiently managing tasks and information for my business. Its powerful capabilities allow me to streamline processes without the constant need to engage others, enabling faster decision-making and execution. A go to place to manage great solutions and conversations we usually get from a 3rd party at great expense. The brain is at your fingertips all the time."),
+        2 => array('n' => 'GATES', 'q' => "We have used the brain since the beginning. It has not only saved hours among hours of work. When commanded it gives the most professional responses from analyzing deals to marketing and business plans and any other task a top CEO would need to complete. The accuracy is like nothing I've ever seen. From contracts, to executed plans to succeed. It's a must have. The cost savings alone pay for it self in the first 30 days, and ensures you achieve success."),
+        3 => array('n' => 'CLAIRE', 'q' => "When faced with a customer disputing their account balance and questioning the value of our apprentice pricing, we leveraged the CEO Advanced framework to deliver a confident, data-driven explanation. Using its strategic insights, we clarified that our pricing reflects a robust business model designed to sustain high-quality service delivery. Specifically, we highlighted how our costs responsibly cover critical overheads such as talent acquisition, training, compliance, and operational excellence."),
+        4 => array('n' => 'STEVE', 'q' => "A genuine combination of Simplicity, Efficiency and Cost-effectiveness! It's precise NDA reviews have minimised my legal requirements and costs, in addition to reducing review time from days to hours. By flagging any risks within NDAs, such as hidden marketing clauses, I am able to engage legal counsel strategically, attending to deals faster and with confidence. It's the difference between missing an opportunity and sealing a great deal. This is THE essential business tool.")
     );
     for($k=1;$k<=4;$k++) {
         $add_hsc("test_n_$k", "Client $k Name", 'hp_test', $test_defaults[$k]['n']);
@@ -231,20 +231,20 @@ function ai_style_theme_customize_register( $wp_customize ) {
 
     // FAQ
     $faq_defaults = array(
-        1 => array('q' => 'What exactly happens on the strategy session?', 'a' => 'This is a focused working session. We look at your business, identify where time, money, and efficiency are being lost, and map out where AI can replace or support your team.'),
-        2 => array('q' => 'Is this just another sales call?', 'a' => 'No. This is a strategy session designed to give you clarity on how AI can be implemented inside your business. If there is a fit, we discuss next steps.'),
-        3 => array('q' => 'What types of businesses do you work with?', 'a' => 'We work with business owners, entrepreneurs, executives, and companies from small businesses to enterprise and government.'),
-        4 => array('q' => 'What do you mean by AI employees?', 'a' => 'AI employees are systems designed to perform specific roles inside your business. This includes sales follow-up, marketing content, customer service, and operational workflows.'),
-        5 => array('q' => 'Can AI really replace parts of my team?', 'a' => 'Yes. In many cases, AI can replace or significantly reduce the need for certain roles, especially where work is repetitive or structured.'),
-        6 => array('q' => 'Why are most companies failing with AI?', 'a' => 'Because they are using it as a tool, not as a system. The companies winning with AI are building it into their sales, operations, and execution.'),
-        7 => array('q' => 'How quickly can this be implemented?', 'a' => 'It depends on the complexity. Some systems can be implemented quickly. Full AI departments take longer to design and build.'),
-        8 => array('q' => 'Do I need technical knowledge or a team to do this?', 'a' => 'No. We handle the strategy, design, and implementation. If you want your team involved, we can train them.'),
-        9 => array('q' => 'What if I want to build this internally?', 'a' => 'We support that. We have a dedicated training division that teaches business owners and teams how to build and scale AI.'),
-        10 => array('q' => 'What kind of results can I expect?', 'a' => 'Most companies see a 20% to 60% reduction in operational costs and a 2x to 5x increase in output in key areas.'),
-        11 => array('q' => 'Is this expensive?', 'a' => 'The real question is: what is the cost of not fixing inefficiency? AI is a way to reduce cost and improve profitability.'),
-        12 => array('q' => 'What if this is not a fit for my business?', 'a' => 'Then you still leave with clarity. We will show you where AI can or cannot be applied. No obligation to move forward.'),
-        13 => array('q' => 'What happens after the call?', 'a' => 'You will have a clear direction. If there is a fit, we outline how we can build or implement AI inside your business.'),
-        14 => array('q' => 'Why should I do this now?', 'a' => 'Because the gap is already happening. Companies implementing AI at a system level are moving faster. Waiting means falling behind.')
+        1 => array('q' => 'WHAT EXACTLY HAPPENS ON THE STRATEGY SESSION?', 'a' => 'This is a focused working session. We look at your business, identify where time, money, and efficiency are being lost, and map out where AI can replace or support your team. You will leave with a clear understanding of where AI fits, what can be automated or improved, and what your first steps should be. This is applied directly to your business, not theory.'),
+        2 => array('q' => 'IS THIS JUST ANOTHER SALES CALL?', 'a' => 'No. This is a strategy session designed to give you clarity on how AI can be implemented inside your business. If there is a fit to work together, we will discuss next steps. If not, you still leave with a plan you can execute.'),
+        3 => array('q' => 'WHAT TYPES OF BUSINESSES DO YOU WORK WITH?', 'a' => 'We work with business owners, entrepreneurs, executives, and companies from small businesses to enterprise and government. If your business has processes, people, or operations, AI can be applied.'),
+        4 => array('q' => 'WHAT DO YOU MEAN BY AI EMPLOYEES?', 'a' => 'AI employees are systems designed to perform specific roles inside your business. This includes sales follow-up, marketing content and campaigns, customer service responses, operational workflows, and internal support tasks. They replace repetitive, time-consuming, and process-driven work, while allowing your team to focus on higher-value activities.'),
+        5 => array('q' => 'CAN AI REALLY REPLACE PARTS OF MY TEAM?', 'a' => 'Yes. In many cases, AI can replace or significantly reduce the need for certain roles, especially where work is repetitive or structured. In other cases, it amplifies your existing team by increasing speed, output, and consistency. The goal is better performance at a lower cost.'),
+        6 => array('q' => 'WHY ARE MOST COMPANIES FAILING WITH AI?', 'a' => 'Because they are using it as a tool, not as a system. They use it for small tasks instead of integrating it into how their business operates. The companies winning with AI are building it into their sales, operations, and execution. That is the difference.'),
+        7 => array('q' => 'HOW QUICKLY CAN THIS BE IMPLEMENTED?', 'a' => 'It depends on the complexity of your business. Some AI systems can be implemented quickly. More advanced systems and full AI departments take longer to design, build, and integrate. During the strategy session, we will outline what is realistic for your situation.'),
+        8 => array('q' => 'DO I NEED TECHNICAL KNOWLEDGE OR A TEAM TO DO THIS?', 'a' => 'No. We handle the strategy, design, and implementation. If you want your team involved, we can train them. If not, we can build and deploy everything for you.'),
+        9 => array('q' => 'WHAT IF I WANT TO BUILD THIS INTERNALLY?', 'a' => 'We support that. We have a dedicated training division that teaches business owners and teams how to build AI employees, implement AI workflows, integrate tools and systems, and scale AI inside their company. You can choose to have us build it, train your team, or both.'),
+        10 => array('q' => 'WHAT KIND OF RESULTS CAN I EXPECT?', 'a' => 'Results vary based on your business and implementation. Most companies see a 20% to 60% reduction in operational costs and a 2x to 5x increase in output in key areas, along with faster execution across sales, marketing, and operations. The goal is measurable improvement in speed, cost, and performance.'),
+        11 => array('q' => 'IS THIS EXPENSIVE?', 'a' => 'The real question is: what is the cost of not fixing inefficiency in your business? Most companies are overpaying for work that can be automated or improved. AI is a way to reduce cost, increase output, and improve profitability.'),
+        12 => array('q' => 'WHAT IF THIS IS NOT A FIT FOR MY BUSINESS?', 'a' => 'Then you still leave the session with clarity. We will show you where AI can or cannot be applied and what your next best move is. There is no obligation to move forward.'),
+        13 => array('q' => 'WHAT HAPPENS AFTER THE CALL?', 'a' => 'After the session, you will have a clear direction. If there is a fit, we will outline how we can build or implement AI inside your business. If not, you still leave with a plan you can use.'),
+        14 => array('q' => 'WHY SHOULD I DO THIS NOW?', 'a' => 'Because the gap is already happening. Companies implementing AI at a system level are reducing costs, increasing output, and moving faster. Companies that wait are not standing still. They are falling behind.')
     );
     for($f=1;$f<=14;$f++) {
         $add_hsc("m_faq_q_$f", "FAQ $f Question", 'modal_sec', $faq_defaults[$f]['q']);
