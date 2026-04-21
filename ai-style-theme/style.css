@@ -16,8 +16,8 @@ Text Domain: ai-style-theme
     --accent-gold: #c5a028;
     --text-white: #ffffff;
     --text-off-white: #e0e0e0;
-    --font-heading: 'Montserrat', sans-serif;
-    --font-body: 'Inter', sans-serif;
+    --font-heading: 'Montserrat', sans-serif; /* Fallbacks, overridden by inline style */
+    --font-body: 'Inter', sans-serif; /* Fallbacks, overridden by inline style */
     --spacing-xl: 140px;
 }
 

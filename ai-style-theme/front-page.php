@@ -63,7 +63,9 @@ get_header();
                 <h2 class="section-label"><?php echo esc_html( get_theme_mod('div_title', 'Implementation + Training Division') ); ?></h2>
             </div>
             <div>
-                <p style="font-size: 1.2rem; opacity: 0.8;"><?php echo wp_kses_post( get_theme_mod('div_text', 'We do not just build AI systems for you. We also give you the capability to build and control them internally.') ); ?></p>
+                <div style="font-size: 1.2rem; opacity: 0.8;">
+                    <?php echo wp_kses_post( get_theme_mod('div_text', 'We do not just build AI systems for you. We also give you the capability to build and control them internally.') ); ?>
+                </div>
                 <ul style="margin-top: 2rem; list-style: none; padding: 0; font-size: 1.1rem; opacity: 0.7;">
                     <li style="margin-bottom: 1rem;">✦ Designing AI employees for specific roles</li>
                     <li style="margin-bottom: 1rem;">✦ Implementing AI workflows across departments</li>
@@ -93,11 +95,26 @@ get_header();
         <h2 class="section-label"><?php echo esc_html( get_theme_mod('serv_title', 'How We Can Help You') ); ?></h2>
         <p style="margin-top: -1rem; margin-bottom: 4rem; opacity: 0.7; font-size: 1.2rem;"><?php echo wp_kses_post( get_theme_mod('serv_sub', 'We are relentlessly focused on one thing. Replacing inefficiency with intelligence.') ); ?></p>
         <div class="dashboard-grid">
-            <?php for($i=1; $i<=12; $i++): ?>
+            <?php
+            $serv_defaults = array(
+                1 => array('t' => 'AI Departments', 'd' => 'We build specialized AI departments that operate as independent, high-output units within your business.'),
+                2 => array('t' => 'AI Employees', 'd' => 'Digital workers designed for specific roles, trained on your data, and integrated into your daily workflows.'),
+                3 => array('t' => 'Custom AI Projects', 'd' => 'Tailored AI solutions for unique business challenges, from predictive modeling to computer vision.'),
+                4 => array('t' => 'AI Workflows', 'd' => 'Automate complex, multi-step processes using LLMs and traditional automation tools.'),
+                5 => array('t' => 'AI SEO — AIO', 'd' => 'Optimize your presence for the age of AI search and generative engines.'),
+                6 => array('t' => 'Tool Activation', 'd' => 'Expert setup and integration of best-in-class AI tools into your existing tech stack.'),
+                7 => array('t' => 'AI Training', 'd' => 'Comprehensive programs to upskill your leadership and staff on leveraging AI effectively.'),
+                8 => array('t' => 'AI Yourself', 'd' => 'Capture your expertise, voice, and decision-making into a personal AI model.'),
+                9 => array('t' => 'Infrastructure Build', 'd' => 'Secure, scalable cloud and local AI infrastructure designed for enterprise-grade performance.'),
+                10 => array('t' => 'Data Intelligence', 'd' => 'Transform your raw business data into actionable insights and automated decision trees.'),
+                11 => array('t' => 'Compliance & Ethics', 'd' => 'Ensure your AI implementations meet global regulatory standards and ethical guidelines.'),
+                12 => array('t' => 'Managed AI Services', 'd' => 'Ongoing monitoring, optimization, and scaling of your AI systems by our expert team.')
+            );
+            for($i=1; $i<=12; $i++): ?>
             <div class="dashboard-card">
                 <div class="card-num"><?php echo str_pad($i, 2, '0', STR_PAD_LEFT); ?></div>
-                <h3><?php echo esc_html( get_theme_mod("serv_t_$i", "Service $i") ); ?></h3>
-                <p><?php echo esc_html( get_theme_mod("serv_d_$i", "Description for service $i") ); ?></p>
+                <h3><?php echo esc_html( get_theme_mod("serv_t_$i", $serv_defaults[$i]['t']) ); ?></h3>
+                <p><?php echo esc_html( get_theme_mod("serv_d_$i", $serv_defaults[$i]['d']) ); ?></p>
             </div>
             <?php endfor; ?>
         </div>
@@ -109,10 +126,17 @@ get_header();
     <div class="container text-center">
         <h2 class="section-label" style="display: inline-block;"><?php echo esc_html( get_theme_mod('scale_title', 'Every Level. Every Scale.') ); ?></h2>
         <div class="dashboard-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
-            <?php for($j=1; $j<=4; $j++): ?>
+            <?php
+            $scale_defaults = array(
+                1 => array('t' => 'Solopreneur', 'd' => 'Scale your personal output without adding expensive human staff.'),
+                2 => array('t' => 'Small Business', 'd' => 'Compete with industry giants using high-efficiency AI infrastructure.'),
+                3 => array('t' => 'Mid-Market', 'd' => 'Optimize departmental performance and reduce operational overhead.'),
+                4 => array('t' => 'Enterprise', 'd' => 'Global-scale AI deployment with strict security and custom integration.')
+            );
+            for($j=1; $j<=4; $j++): ?>
             <div class="dashboard-card" style="text-align: left;">
-                <h4 style="color: var(--accent-teal);"><?php echo esc_html(get_theme_mod("scale_t_$j")); ?></h4>
-                <p><?php echo esc_html(get_theme_mod("scale_d_$j")); ?></p>
+                <h4 style="color: var(--accent-teal);"><?php echo esc_html(get_theme_mod("scale_t_$j", $scale_defaults[$j]['t'])); ?></h4>
+                <p><?php echo esc_html(get_theme_mod("scale_d_$j", $scale_defaults[$j]['d'])); ?></p>
             </div>
             <?php endfor; ?>
         </div>
