@@ -16,13 +16,19 @@
             </div>
 
             <nav id="site-navigation" class="main-navigation">
+                <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
                 <?php
                 wp_nav_menu(
                     array(
                         'theme_location' => 'menu-1',
                         'menu_id'        => 'primary-menu',
-                        'container'      => false,
-                        'items_wrap'     => '<ul id="%1$s" class="%2$s" style="display: flex; list-style: none; margin: 0; padding: 0; gap: 3rem; text-transform: uppercase; font-size: 0.85rem; font-weight: 800; letter-spacing: 0.15em;">%3$s<li class="menu-item-cta"><a href="#" class="open-modal" style="color: var(--accent-teal);">Book a Call</a></li></ul>',
+                        'container'      => 'div',
+                        'container_class' => 'menu-container',
+                        'items_wrap'     => '<ul id="%1$s" class="%2$s nav-menu">%3$s<li class="menu-item-cta"><a href="#" class="open-modal">Book a Call</a></li></ul>',
                     )
                 );
                 ?>

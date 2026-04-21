@@ -1,4 +1,25 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Mobile Menu
+    const menuToggle = document.querySelector('.menu-toggle');
+    const menuContainer = document.querySelector('.menu-container');
+    const navLinks = document.querySelectorAll('.nav-menu a');
+
+    if (menuToggle && menuContainer) {
+        menuToggle.addEventListener('click', function() {
+            this.classList.toggle('is-active');
+            menuContainer.classList.toggle('is-open');
+            document.body.classList.toggle('menu-open');
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                menuToggle.classList.remove('is-active');
+                menuContainer.classList.remove('is-open');
+                document.body.classList.remove('menu-open');
+            });
+        });
+    }
+
     const modal = document.getElementById('call-modal');
     const openBtns = document.querySelectorAll('.open-modal');
     const closeBtn = document.querySelector('.close-modal');
@@ -28,14 +49,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Header scroll effect
     const header = document.querySelector('.site-header');
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.style.backgroundColor = 'rgba(0,0,0,0.9)';
-            header.style.padding = '15px 0';
-            header.style.borderBottom = '1px solid rgba(255,255,255,0.05)';
+        if (window.scrollY > 100) {
+            header.classList.add('is-sticky');
         } else {
-            header.style.backgroundColor = 'transparent';
-            header.style.padding = '30px 0';
-            header.style.borderBottom = 'none';
+            header.classList.remove('is-sticky');
         }
     });
 
