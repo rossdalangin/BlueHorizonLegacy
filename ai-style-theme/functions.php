@@ -32,8 +32,8 @@ add_action( 'after_setup_theme', 'ai_style_theme_setup' );
 
 function ai_style_theme_scripts() {
     wp_enqueue_style( 'ai-style-theme-fonts', 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@700;800&display=swap', array(), null );
-    wp_enqueue_style( 'ai-style-theme-style', get_stylesheet_uri(), array(), '1.9.0' );
-    wp_enqueue_script( 'ai-style-theme-scripts', get_template_directory_uri() . '/assets/js/theme-scripts.js', array(), '1.9.0', true );
+    wp_enqueue_style( 'ai-style-theme-style', get_stylesheet_uri(), array(), '2.1.0' );
+    wp_enqueue_script( 'ai-style-theme-scripts', get_template_directory_uri() . '/assets/js/theme-scripts.js', array(), '2.1.0', true );
 
     $primary_navy = get_theme_mod('color_navy', '#001f3f');
     $primary_charcoal = get_theme_mod('color_charcoal', '#080808');
@@ -52,6 +52,21 @@ function ai_style_theme_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'ai_style_theme_scripts' );
 
+function ai_style_theme_widgets_init() {
+	register_sidebar( array(
+		'name'          => 'Sidebar',
+		'id'            => 'sidebar-1',
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
+}
+add_action( 'widgets_init', 'ai_style_theme_widgets_init' );
+
+/**
+ * Customizer
+ */
 function ai_style_theme_customize_register( $wp_customize ) {
 
     // Theme Colors
@@ -68,7 +83,7 @@ function ai_style_theme_customize_register( $wp_customize ) {
     }
 
     // Homepage Panel
-    $wp_customize->add_panel( 'homepage_panel', array( 'title' => 'Homepage Management', 'priority' => 30 ) );
+    $wp_customize->add_panel( 'homepage_panel', array( 'title' => 'Homepage Content', 'priority' => 30 ) );
 
     $add_sc = function($id, $label, $section, $default = '', $type = 'text') use ($wp_customize) {
         $wp_customize->add_setting( $id, array(
@@ -83,61 +98,52 @@ function ai_style_theme_customize_register( $wp_customize ) {
     };
 
     // Hero
-    $wp_customize->add_section( 'hero_sec', array('title' => '01. Hero Section', 'panel' => 'homepage_panel') );
+    $wp_customize->add_section( 'hero_sec', array('title' => 'Hero', 'panel' => 'homepage_panel') );
     $add_sc('hero_top', 'Top Bar Text', 'hero_sec', 'Operating in 72 Countries  |  102 Global Partners');
-    $add_sc('hero_title', 'Main Title', 'hero_sec', 'We Are Your<br>AI Department.', 'textarea');
+    $add_sc('hero_title', 'Title', 'hero_sec', 'We Are Your<br>AI Department.', 'textarea');
     $add_sc('hero_sub', 'Subtitle', 'hero_sec', 'We design, build, and deploy AI Departments that scale your business without scaling your headcount.', 'textarea');
-    $add_sc('hero_btn', 'CTA Button Text', 'hero_sec', 'Book a Strategy Call');
+    $add_sc('hero_btn', 'Button Text', 'hero_sec', 'Book a Strategy Call');
 
     // Marquee
-    $wp_customize->add_section( 'marquee_sec', array('title' => '02. Marquee Text', 'panel' => 'homepage_panel') );
-    $add_sc('marquee_text', 'Content (repeatable)', 'marquee_sec', 'AI Departments ✦ AI Employees ✦ Custom AI Projects ✦ AI Workflows ✦ AI SEO ✦ Tool Activation ✦ AI Training ✦ AI Yourself ✦ 72 Countries ✦ Done For You ✦ Enterprise to Solopreneur', 'textarea');
+    $wp_customize->add_section( 'marquee_sec', array('title' => 'Marquee', 'panel' => 'homepage_panel') );
+    $add_sc('marquee_text', 'Content', 'marquee_sec', 'AI Departments ✦ AI Employees ✦ Custom AI Projects ✦ AI Workflows ✦ AI SEO', 'textarea');
 
     // Who We Are
-    $wp_customize->add_section( 'who_sec', array('title' => '03. Who We Are', 'panel' => 'homepage_panel') );
+    $wp_customize->add_section( 'who_sec', array('title' => 'Who We Are', 'panel' => 'homepage_panel') );
     $add_sc('who_title', 'Title', 'who_sec', 'Who Is The AI Agency Group');
     $add_sc('who_text', 'Content', 'who_sec', 'The AI Agency Group is a global AI infrastructure and implementation firm...', 'textarea');
 
-    // Division
-    $wp_customize->add_section( 'div_sec', array('title' => '04. Implementation Division', 'panel' => 'homepage_panel') );
-    $add_sc('div_title', 'Title', 'div_sec', 'Implementation + Training Division');
-    $add_sc('div_text', 'Content', 'div_sec', 'We do not just build AI systems for you. We also give you the capability to build and control them internally.', 'textarea');
-
     // Industries
-    $wp_customize->add_section( 'ind_sec', array('title' => '05. Industries', 'panel' => 'homepage_panel') );
+    $wp_customize->add_section( 'ind_sec', array('title' => 'Industries', 'panel' => 'homepage_panel') );
     $add_sc('ind_title', 'Title', 'ind_sec', 'Trusted Across Industries');
-    $add_sc('ind_list', 'List (Comma separated)', 'ind_sec', 'Government, Solopreneurs, Insurance, Private Equity, M&A, Mining, Real Estate, Finance, Healthcare, Legal, E-Commerce, Technology');
+    $add_sc('ind_list', 'List (Comma separated)', 'ind_sec', 'Government, Solopreneurs, Insurance, Finance, Healthcare, Legal');
 
-    // Services (Simplified Grouping)
-    $wp_customize->add_section( 'serv_sec', array('title' => '06. Services', 'panel' => 'homepage_panel') );
+    // Services
+    $wp_customize->add_section( 'serv_sec', array('title' => 'Services', 'panel' => 'homepage_panel') );
     $add_sc('serv_title', 'Title', 'serv_sec', 'How We Can Help You');
     $add_sc('serv_sub', 'Subtitle', 'serv_sec', 'Replacing inefficiency with intelligence.', 'textarea');
 
-    // Who We Build For
-    $wp_customize->add_section( 'build_sec', array('title' => '07. Who We Build For', 'panel' => 'homepage_panel') );
+    // Scale
+    $wp_customize->add_section( 'build_sec', array('title' => 'Who We Build For', 'panel' => 'homepage_panel') );
     $add_sc('build_title', 'Title', 'build_sec', 'Every Level. Every Scale.');
 
-    // Founder Bio
-    $wp_customize->add_section( 'bio_sec', array('title' => '08. Founder Bio', 'panel' => 'homepage_panel') );
+    // Bio
+    $wp_customize->add_section( 'bio_sec', array('title' => 'Founder Bio', 'panel' => 'homepage_panel') );
     $add_sc('bio_img', 'Image', 'bio_sec', '', 'image');
-    $add_sc('bio_label', 'Label', 'bio_sec', 'Founding Managing Partner');
     $add_sc('bio_name', 'Name', 'bio_sec', 'JT FOXX');
     $add_sc('bio_text', 'Bio Text', 'bio_sec', 'JT Foxx is a global entrepreneur...', 'textarea');
     $add_sc('bio_quote', 'Quote', 'bio_sec', '"Business is War. AI is the New Weapon."');
 
-    // Testimonials
-    $wp_customize->add_section( 'test_sec', array('title' => '09. Testimonials', 'panel' => 'homepage_panel') );
-    $add_sc('test_title', 'Title', 'test_sec', 'Real Businesses. Real Results.');
-
-    // Final CTA
-    $wp_customize->add_section( 'cta_sec', array('title' => '10. Final CTA', 'panel' => 'homepage_panel') );
+    // CTA
+    $wp_customize->add_section( 'cta_sec', array('title' => 'Final CTA', 'panel' => 'homepage_panel') );
     $add_sc('cta_title', 'Title', 'cta_sec', 'Ready to Work With Us?');
     $add_sc('cta_sub', 'Subtitle', 'cta_sec', 'Let us build your AI department and put the most powerful weapon in business to work for you.');
 
-    // Popup Modal
-    $wp_customize->add_section( 'modal_section', array('title' => '11. Popup Modal', 'priority' => 40) );
+    // Modal
+    $wp_customize->add_section( 'modal_section', array('title' => 'Book a Call Modal', 'priority' => 40) );
     $add_sc('modal_title', 'Title', 'modal_section', 'Secure Your AI Strategy Session');
     $add_sc('modal_sub', 'Subtitle', 'modal_section', '15–30 Minutes &middot; No Obligation', 'textarea');
-    $add_sc('modal_url', 'Iframe URL', 'modal_section', 'https://forms.aiagencygroup.ai/ai-strategy-session', 'url');
+    $add_sc('modal_cf7_shortcode', 'Contact Form 7 Shortcode', 'modal_section', '[contact-form-7 id="123" title="Book a Call"]');
+    $add_sc('modal_info', 'Footer Info', 'modal_section', 'Limited availability — if a slot is visible, it just opened');
 }
 add_action( 'customize_register', 'ai_style_theme_customize_register' );
