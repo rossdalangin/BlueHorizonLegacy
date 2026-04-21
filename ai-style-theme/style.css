@@ -4,7 +4,7 @@ Theme URI: http://example.com/ai-style-theme
 Author: Jules
 Author URI: http://example.com
 Description: A high-end, professional WordPress landing page design for an elite AI intelligence platform. Flat and minimalist.
-Version: 2.0.0
+Version: 2.2.0
 Text Domain: ai-style-theme
 */
 
@@ -85,7 +85,7 @@ h1, h2, h3, h4 {
 .industry-grid span { font-size: 1.4rem; text-transform: uppercase; font-weight: 700; opacity: 0.3; transition: 0.3s; }
 .industry-grid span:hover { opacity: 1; color: var(--accent-teal); }
 
-.dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; margin-top: 5rem; }
+.dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2.5rem; margin-top: 5rem; }
 .dashboard-card { background: rgba(255,255,255,0.02); padding: 4rem 3.5rem; border: 1px solid rgba(255,255,255,0.05); transition: 0.5s; }
 .dashboard-card:hover { border-color: var(--accent-teal); transform: translateY(-10px); }
 .card-num { font-family: var(--font-heading); font-size: 2.5rem; color: var(--accent-teal); margin-bottom: 1rem; font-weight: 800; }
@@ -119,4 +119,4 @@ h1, h2, h3, h4 {
 .wpcf7 .wpcf7-submit:hover { background: #fff; }
 
 @media (max-width: 1024px) { .grid-two { grid-template-columns: 1fr; gap: 4rem; } .hero-title { font-size: 4rem; } }
-@media (max-width: 768px) { .container { padding: 0 30px; } .hero-title { font-size: 3rem; } .section-label { font-size: 2.5rem; } }
+@media (max-width: 768px) { .container { padding: 0 30px; } .hero-title { font-size: 3rem; } .section-label { font-size: 2.5rem; } .dashboard-grid { grid-template-columns: 1fr; } }

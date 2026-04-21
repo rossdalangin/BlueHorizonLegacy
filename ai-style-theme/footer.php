@@ -49,61 +49,36 @@
 <div id="call-modal" class="modal">
     <div class="modal-content">
         <span class="close-modal">&times;</span>
-        <h2 class="text-center" style="font-size: 2.5rem; margin-bottom: 1rem;"><?php echo esc_html( get_theme_mod( 'modal_title', 'Secure Your AI Strategy Session' ) ); ?></h2>
-        <p class="text-center" style="opacity: 0.7; margin-bottom: 3rem; font-size: 1.2rem;"><?php echo wp_kses_post( get_theme_mod( 'modal_sub', '15–30 Minutes &middot; No Obligation &middot; Leave with a Clear Plan' ) ); ?></p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6rem;">
+            <div class="modal-left">
+                <h2 style="font-size: 2.5rem; margin-bottom: 1rem;"><?php echo esc_html( get_theme_mod( 'm_title', 'Secure Your AI Strategy Session' ) ); ?></h2>
+                <p style="opacity: 0.7; margin-bottom: 3rem; font-size: 1.2rem;"><?php echo wp_kses_post( get_theme_mod( 'm_sub', '15–30 Minutes &middot; No Obligation &middot; Leave with a Clear Plan' ) ); ?></p>
 
-        <div class="modal-form-container">
-            <?php
-            $cf7_shortcode = get_theme_mod( 'modal_cf7_shortcode' );
-            if ( $cf7_shortcode ) {
-                echo do_shortcode( $cf7_shortcode );
-            } else {
-                echo '<p class="text-center">Please configure the Contact Form 7 shortcode in the Customizer.</p>';
-            }
-            ?>
+                <h4 style="margin-bottom: 2rem; color: var(--accent-teal);"><?php echo esc_html(get_theme_mod('m_ben_title', 'What You’ll Get on This Call')); ?></h4>
+                <ul style="list-style: none; padding: 0; font-size: 1.1rem; line-height: 2;">
+                    <?php
+                    $bens = explode("\n", get_theme_mod('m_ben_list', "Identify losing time/money\nPinpoint replaceable roles\nMap profit opportunities"));
+                    foreach ($bens as $b) if(trim($b)) echo '<li style="margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.5rem;">✦ '.esc_html(trim($b)).'</li>';
+                    ?>
+                </ul>
+            </div>
+            <div class="modal-right">
+                <div class="modal-form-container" style="background: rgba(255,255,255,0.02); padding: 3rem; border: 1px solid rgba(255,255,255,0.05);">
+                    <?php
+                    $cf7 = get_theme_mod( 'm_cf7' );
+                    echo $cf7 ? do_shortcode($cf7) : '<p>Please configure the CF7 shortcode.</p>';
+                    ?>
+                </div>
+            </div>
         </div>
-
-        <p class="text-center" style="margin-top: 3rem; font-size: 0.85rem; opacity: 0.5;">
-            <?php echo esc_html( get_theme_mod( 'modal_info', 'Limited availability — if a slot is visible, it just opened' ) ); ?>
-        </p>
     </div>
 </div>
 
 <style>
-    .modal { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); backdrop-filter: blur(20px); overflow-y: auto; }
-    .modal-content { background: #000; margin: 5% auto; padding: 6rem 5rem; width: 90%; max-width: 800px; position: relative; border: 1px solid rgba(255,255,255,0.1); }
-    .close-modal { position: absolute; right: 2rem; top: 1.5rem; font-size: 3rem; color: #fff; cursor: pointer; transition: 0.3s; }
+    .modal { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.98); backdrop-filter: blur(25px); overflow-y: auto; }
+    .modal-content { background: #000; margin: 2% auto; padding: 8rem 6rem; width: 95%; max-width: 1200px; position: relative; border: 1px solid rgba(255,255,255,0.1); }
+    .close-modal { position: absolute; right: 3rem; top: 2rem; font-size: 3.5rem; color: #fff; cursor: pointer; transition: 0.3s; }
     .close-modal:hover { color: var(--accent-teal); }
-
-    /* CF7 Modal Styling */
-    .modal-form-container .wpcf7-form-control-wrap { margin-bottom: 1.5rem; display: block; }
-    .modal-form-container input[type="text"],
-    .modal-form-container input[type="email"],
-    .modal-form-container input[type="tel"],
-    .modal-form-container textarea {
-        width: 100%;
-        background: rgba(255,255,255,0.03);
-        border: 1px solid rgba(255,255,255,0.1);
-        padding: 1.2rem;
-        color: #fff;
-        font-family: inherit;
-        border-radius: 0;
-        outline: none;
-    }
-    .modal-form-container input:focus, .modal-form-container textarea:focus { border-color: var(--accent-teal); }
-    .modal-form-container input[type="submit"] {
-        width: 100%;
-        background: var(--accent-teal);
-        color: #000;
-        border: none;
-        padding: 1.4rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.15em;
-        cursor: pointer;
-        transition: 0.3s;
-    }
-    .modal-form-container input[type="submit"]:hover { background: #fff; }
 </style>
 
 <?php wp_footer(); ?>

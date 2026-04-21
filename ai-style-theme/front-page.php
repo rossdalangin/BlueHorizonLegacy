@@ -35,7 +35,7 @@ get_header();
 <div class="marquee-wrapper">
     <div class="marquee-content">
         <?php
-        $mq = get_theme_mod('marquee_text', 'AI Departments ✦ AI Employees ✦ Custom AI Projects ✦ AI Workflows ✦ AI SEO — AIO ✦ Tool Activation ✦ AI Training ✦ AI Yourself ✦ 72 Countries ✦ Done For You ✦ Enterprise to Solopreneur');
+        $mq = get_theme_mod('mq_text', 'AI Departments ✦ AI Employees ✦ Custom AI Projects ✦ AI Workflows ✦ AI SEO — AIO ✦ Tool Activation ✦ AI Training ✦ AI Yourself ✦ 72 Countries ✦ Done For You ✦ Enterprise to Solopreneur');
         echo esc_html($mq) . ' ✦ ' . esc_html($mq);
         ?>
     </div>
@@ -49,7 +49,7 @@ get_header();
                 <h2 class="section-label"><?php echo esc_html( get_theme_mod('who_title', 'Who Is The AI Agency Group') ); ?></h2>
             </div>
             <div style="font-size: 1.2rem; line-height: 1.8; opacity: 0.8;">
-                <?php echo wp_kses_post( get_theme_mod('who_text', 'The AI Agency Group is a global AI infrastructure and implementation firm...') ); ?>
+                <?php echo wp_kses_post( get_theme_mod('who_text', 'The AI Agency Group is a global AI infrastructure and implementation firm builds AI departments and AI employees that replace work, reduce costs, and increase output across your business.') ); ?>
             </div>
         </div>
     </div>
@@ -69,7 +69,6 @@ get_header();
                     <li style="margin-bottom: 1rem;">✦ Implementing AI workflows across departments</li>
                     <li style="margin-bottom: 1rem;">✦ Integrating tools, systems, and custom builds</li>
                 </ul>
-                <a href="#" class="btn btn-outline" style="margin-top: 3rem;">See Our Services</a>
             </div>
         </div>
     </div>
@@ -94,47 +93,43 @@ get_header();
         <h2 class="section-label"><?php echo esc_html( get_theme_mod('serv_title', 'How We Can Help You') ); ?></h2>
         <p style="margin-top: -1rem; margin-bottom: 4rem; opacity: 0.7; font-size: 1.2rem;"><?php echo wp_kses_post( get_theme_mod('serv_sub', 'We are relentlessly focused on one thing. Replacing inefficiency with intelligence.') ); ?></p>
         <div class="dashboard-grid">
+            <?php for($i=1; $i<=12; $i++): ?>
             <div class="dashboard-card">
-                <div class="card-num">01</div>
-                <h3>AI Departments</h3>
-                <p>We build your entire AI operation. Strategy, systems, employees, and workflows.</p>
+                <div class="card-num"><?php echo str_pad($i, 2, '0', STR_PAD_LEFT); ?></div>
+                <h3><?php echo esc_html( get_theme_mod("serv_t_$i", "Service $i") ); ?></h3>
+                <p><?php echo esc_html( get_theme_mod("serv_d_$i", "Description for service $i") ); ?></p>
             </div>
-            <div class="dashboard-card">
-                <div class="card-num">02</div>
-                <h3>AI Employees</h3>
-                <p>AI employees that handle sales, support, and operations 24/7. Replace or amplify your team.</p>
-            </div>
-            <div class="dashboard-card">
-                <div class="card-num">03</div>
-                <h3>Custom AI Projects</h3>
-                <p>You dream it. We build it. We engineer the AI solution from the ground up.</p>
-            </div>
-            <div class="dashboard-card">
-                <div class="card-num">04</div>
-                <h3>AI Workflows</h3>
-                <p>We map, automate, and optimize your most time-consuming processes.</p>
-            </div>
+            <?php endfor; ?>
         </div>
     </div>
 </section>
 
 <!-- Scale Section -->
-<section class="section">
+<section class="section section-alt flat-border">
     <div class="container text-center">
-        <h2 class="section-label" style="display: inline-block;"><?php echo esc_html( get_theme_mod('build_title', 'Every Level. Every Scale.') ); ?></h2>
+        <h2 class="section-label" style="display: inline-block;"><?php echo esc_html( get_theme_mod('scale_title', 'Every Level. Every Scale.') ); ?></h2>
+        <div class="dashboard-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+            <?php for($j=1; $j<=4; $j++): ?>
+            <div class="dashboard-card" style="text-align: left;">
+                <h4 style="color: var(--accent-teal);"><?php echo esc_html(get_theme_mod("scale_t_$j")); ?></h4>
+                <p><?php echo esc_html(get_theme_mod("scale_d_$j")); ?></p>
+            </div>
+            <?php endfor; ?>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section id="testimonials" class="section">
+    <div class="container">
+        <h2 class="section-label text-center" style="display: block; margin: 0 auto 5rem;"><?php echo esc_html( get_theme_mod('test_title', 'Real Businesses. Real Results.') ); ?></h2>
         <div class="dashboard-grid">
-            <div class="dashboard-card" style="text-align: left;">
-                <h4 style="color: var(--accent-teal);">01 Solopreneur</h4>
-                <p>You do not need a team. You need AI working for you around the clock.</p>
+            <?php for($k=1; $k<=4; $k++): ?>
+            <div class="dashboard-card">
+                <p style="font-style: italic; opacity: 0.8; margin-bottom: 2rem;">"<?php echo wp_kses_post(get_theme_mod("test_q_$k")); ?>"</p>
+                <h4 style="color: var(--accent-gold);"><?php echo esc_html(get_theme_mod("test_n_$k")); ?></h4>
             </div>
-            <div class="dashboard-card" style="text-align: left;">
-                <h4 style="color: var(--accent-teal);">02 Entrepreneur</h4>
-                <p>We build the AI layer that scales with your revenue without scaling your payroll.</p>
-            </div>
-            <div class="dashboard-card" style="text-align: left;">
-                <h4 style="color: var(--accent-teal);">03 Enterprise</h4>
-                <p>We deploy AI departments across divisions and automate complex workflows.</p>
-            </div>
+            <?php endfor; ?>
         </div>
     </div>
 </section>
@@ -150,13 +145,12 @@ get_header();
             <div class="bio-visual flat-border" style="height: 600px; display: flex; align-items: center; justify-content: center; <?php echo $bio_style; ?>">
                 <?php if (!$bio_img): ?>
                 <div style="color: var(--accent-teal); text-align: center;">
-                    <p style="font-size: 0.8rem; letter-spacing: 0.3em;"><?php echo esc_html(get_theme_mod('bio_label', 'Founding Managing Partner')); ?></p>
                     <h2 style="font-size: 3rem;"><?php echo esc_html( get_theme_mod('bio_name', 'JT FOXX') ); ?></h2>
                 </div>
                 <?php endif; ?>
             </div>
             <div>
-                <h2 class="section-label">Who Is JT Foxx.</h2>
+                <h2 class="section-label">Founder Profile</h2>
                 <div style="font-size: 1.15rem; line-height: 1.8; opacity: 0.8;">
                     <?php echo wp_kses_post( get_theme_mod('bio_text', 'JT Foxx is a global entrepreneur, investor, and one of the most sought-after voices in business today.') ); ?>
                     <p style="margin-top: 3rem; color: var(--accent-gold); font-size: 1.5rem; font-weight: 700;">
@@ -175,7 +169,7 @@ get_header();
             <?php echo esc_html(get_theme_mod('cta_title', 'Ready to Work With Us?')); ?>
         </h2>
         <p style="max-width: 700px; margin: 0 auto 4rem; font-size: 1.3rem; opacity: 0.8;">
-            <?php echo esc_html(get_theme_mod('cta_sub', 'Let us build your AI department and put the most powerful weapon in business to work for you.')); ?>
+            <?php echo esc_html(get_theme_mod('cta_sub', 'The businesses winning right now are not smarter. They are better armed.')); ?>
         </p>
         <a href="#" class="btn btn-teal open-modal"><?php echo esc_html( get_theme_mod( 'hero_btn', 'Book a Strategy Call' ) ); ?></a>
     </div>
