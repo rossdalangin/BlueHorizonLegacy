@@ -110,7 +110,7 @@ function ai_style_theme_customize_register( $wp_customize ) {
             'Montserrat' => 'Montserrat',
             'Roboto' => 'Roboto',
             'Open Sans' => 'Open Sans',
-            'Lightweight Sans' => 'Lightweight Sans',
+            'Nunito' => 'Nunito',
         )
     ));
 
@@ -221,6 +221,11 @@ function ai_style_theme_customize_register( $wp_customize ) {
     $wp_customize->add_section( 'hp_cta', array('title' => '11. Final CTA', 'panel' => 'hp_panel') );
     $add_hsc('cta_title', 'Title', 'hp_cta', 'Ready to Work With Us?');
     $add_hsc('cta_sub', 'Subtitle', 'hp_cta', 'The businesses winning right now are not smarter. They are better armed.');
+
+    // Footer
+    $wp_customize->add_section( 'theme_footer', array('title' => 'Footer Settings', 'priority' => 100) );
+    $add_hsc('footer_logo', 'Footer Logo Text', 'theme_footer', 'AI AGENCY GROUP');
+    $add_hsc('footer_copy', 'Copyright Text', 'theme_footer', 'AI Agency Group LLC — All Rights Reserved');
 
     // Modal
     $wp_customize->add_section( 'modal_sec', array('title' => 'Settings', 'panel' => 'modal_panel') );
