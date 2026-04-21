@@ -63,7 +63,7 @@
         <span class="close-modal" id="strategyModalClose">&times;</span>
 
         <div class="modal-header-clean">
-            <h2 class="modal-main-title"><?php echo esc_html(get_theme_mod('m_title', 'Secure Your AI Strategy Session')); ?></h2>
+            <h2 class="modal-main-title"><?php echo esc_html(get_theme_mod('m_title', 'SECURE YOUR AI STRATEGY SESSION')); ?></h2>
             <p class="modal-subtitle"><?php echo esc_html(get_theme_mod('m_sub', '15–30 Minutes · No Obligation · Leave with a Clear Plan')); ?></p>
         </div>
 
@@ -74,9 +74,12 @@
                     <div class="wpcf7-wrapper">
                         <?php echo do_shortcode( get_theme_mod( 'm_cf7', '[contact-form-7 id="123" title="Book a Call"]' ) ); ?>
                     </div>
+                    <div class="modal-notice">
+                        Limited Availability | If you see a time available, a slot just opened
+                    </div>
                 </div>
 
-                <!-- Benefits Area -->
+                <!-- Info Area -->
                 <div class="modal-info-area-stacked">
                     <div class="modal-info-section">
                         <h3 class="modal-section-title">Increase Profit. Reduce Costs. Replace or Amplify Your Team with AI.</h3>
@@ -95,7 +98,7 @@
 
                     <!-- Who This Is For -->
                     <div class="modal-info-section">
-                        <p class="section-label" style="color:#000 !important; font-size: 2.5rem;">Who This <span class="accent" style="color:var(--accent-blue);">Is For</span></p>
+                        <p class="section-label" style="color:#000 !important; font-size: 2.5rem; font-family: var(--font-heading);">Who This <span class="accent" style="color:var(--accent-blue);">Is For</span></p>
                         <div class="section-rule" style="background:var(--accent-blue); margin-top:-1.5rem;"></div>
                         <div class="for-grid">
                             <div class="who-card">
@@ -123,7 +126,7 @@
 
                     <!-- Reinforcement -->
                     <div class="modal-info-section">
-                        <p class="section-label" style="color:#000 !important; font-size: 2.5rem;">Most Companies <span class="accent" style="color:var(--accent-gold);">Use AI Wrong</span></p>
+                        <p class="section-label" style="color:#000 !important; font-size: 2.5rem; font-family: var(--font-heading);">Most Companies <span class="accent" style="color:var(--accent-gold);">Use AI Wrong</span></p>
                         <div class="section-rule" style="background:var(--accent-gold); margin-top:-1.5rem;"></div>
                         <div class="contrast-grid">
                             <div class="contrast-cell">
@@ -155,7 +158,7 @@
 
                     <!-- Cost of Delay -->
                     <div class="modal-info-section">
-                        <p class="section-label" style="color:#000 !important; font-size: 2.5rem;">Every Month You <span class="accent" style="color:#ff3b30;">Delay Has a Cost</span></p>
+                        <p class="section-label" style="color:#000 !important; font-size: 2.5rem; font-family: var(--font-heading);">Every Month You <span class="accent" style="color:#ff3b30;">Delay Has a Cost</span></p>
                         <div class="section-rule" style="background:#ff3b30; margin-top:-1.5rem;"></div>
                         <p class="modal-section-desc">Most companies use AI to save small amounts of time. This session focuses on using AI where it actually impacts profit, cost, and execution. That gap compounds every month it goes unaddressed.</p>
                         <ol class="cost-list">
@@ -166,7 +169,7 @@
                     </div>
 
                     <div class="modal-info-section">
-                        <p class="section-label" style="color:#000 !important; text-align:center !important; font-size: 2.5rem;">Common <span class="accent" style="color:var(--accent-gold);">Questions</span></p>
+                        <p class="section-label" style="color:#000 !important; text-align:center !important; font-size: 2.5rem; font-family: var(--font-heading);">Common <span class="accent" style="color:var(--accent-gold);">Questions</span></p>
                         <div class="section-rule" style="margin: -1.5rem auto 3.5rem;"></div>
                         <div class="faq-grid">
                             <?php

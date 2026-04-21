@@ -121,7 +121,7 @@ function ai_style_theme_customize_register( $wp_customize ) {
 
     // Homepage Sections
     $wp_customize->add_section( 'hp_hero', array('title' => '01. Hero', 'panel' => 'hp_panel') );
-    $add_hsc('hero_top', 'Top Bar', 'hp_hero', 'Operating in 72 Countries  |  102 Global Partners');
+    $add_hsc('hero_top', 'Top Bar', 'hp_hero', 'OPERATING IN 72 COUNTRIES  |  102 GLOBAL PARTNERS');
     $add_hsc('hero_title', 'Title', 'hp_hero', 'WE ARE YOUR<br>AI DEPARTMENT.', 'wp_kses_post');
     $add_hsc('hero_sub', 'Subtitle', 'hp_hero', 'We design, build, and deploy AI Departments that scale your business without scaling your headcount. Done for you. Running in weeks.', 'textarea');
     $add_hsc('hero_btn', 'Btn Text', 'hp_hero', 'Book a Strategy Call');
@@ -130,12 +130,12 @@ function ai_style_theme_customize_register( $wp_customize ) {
     $add_hsc('mq_text', 'Content', 'hp_marquee', 'AI Departments ✦ AI Employees ✦ Custom AI Projects ✦ AI Workflows ✦ AI SEO — AIO ✦ Tool Activation ✦ AI Training ✦ AI Yourself ✦ 72 Countries ✦ Done For You ✦ Enterprise to Solopreneur', 'textarea');
 
     $wp_customize->add_section( 'hp_who', array('title' => '03. Who We Are', 'panel' => 'hp_panel') );
-    $add_hsc('who_title', 'Title', 'hp_who', 'WHO IS THE AI AGENCY GROUP');
-    $add_hsc('who_text', 'Text', 'hp_who', 'The AI Agency Group is a global AI infrastructure and implementation firm that builds AI departments and AI employees that replace work, reduce costs, and increase output across your business. With 102 partners spread out all around the world, we serve companies of all sizes all over the globe, from solopreneurs to enterprise organizations and government.', 'textarea');
+    $add_hsc('who_title', 'Title', 'hp_who', 'INCREASE PROFITABILITY');
+    $add_hsc('who_text', 'Text', 'hp_who', 'Business owners who want more margin without more people or more complexity', 'textarea');
 
     $wp_customize->add_section( 'hp_div', array('title' => '04. Training Division', 'panel' => 'hp_panel') );
-    $add_hsc('div_title', 'Title', 'hp_div', 'Implementation + Training Division');
-    $add_hsc('div_text', 'Text', 'hp_div', 'We do not just build AI systems for you. We also give you the capability to build and control them internally.', 'textarea');
+    $add_hsc('div_title', 'Title', 'hp_div', 'IMPLEMENTATION + TRAINING DIVISION');
+    $add_hsc('div_text', 'Text', 'hp_div', 'Most AI agencies are run by technicians who understand tools but do not understand how businesses actually operate. Every partner inside our firm is an entrepreneur who owns and operates multiple businesses.', 'textarea');
     $add_hsc('div_list', 'List (One per line)', 'hp_div', "Designing AI employees for specific roles\nImplementing AI workflows across departments\nIntegrating tools, systems, and custom builds\nScaling AI inside your company without breaking operations\nTurning AI into a long-term asset, not a one-time project", 'textarea');
 
     $wp_customize->add_section( 'hp_ind', array('title' => '05. Industries', 'panel' => 'hp_panel') );
@@ -147,18 +147,18 @@ function ai_style_theme_customize_register( $wp_customize ) {
     $add_hsc('serv_sub', 'Subtitle', 'hp_serv', 'We are relentlessly focused on one thing. Replacing inefficiency with intelligence and scaling your business without scaling your headcount.', 'textarea');
 
     $serv_defaults = array(
-        1 => array('t' => 'AI Departments', 'd' => 'We build your entire AI operation. Strategy, systems, employees, and workflows. Designed for your business. Deployed and running in weeks.'),
-        2 => array('t' => 'AI Employees', 'd' => 'AI employees that handle sales, support, and operations 24/7. Replace or amplify your team with AI that never stops.'),
-        3 => array('t' => 'Custom AI Projects', 'd' => 'You dream it. We build it. Have a specific problem or a bold vision? We engineer the AI solution from the ground up.'),
-        4 => array('t' => 'AI Workflows', 'd' => 'We map, automate, and optimize your most time-consuming processes. The result is a leaner, faster, more profitable operation.'),
+        1 => array('t' => 'AI DEPARTMENTS', 'd' => 'We build your entire AI operation. Strategy, systems, employees, and workflows. Designed for your business. Deployed and running in weeks. Most businesses have tools. The ones pulling ahead have departments.'),
+        2 => array('t' => 'AI EMPLOYEES', 'd' => 'AI employees that handle sales, support, and operations 24/7. Replace or amplify your team with AI that never stops.'),
+        3 => array('t' => 'CUSTOM AI PROJECTS', 'd' => 'You dream it. We build it. Have a specific problem or a bold vision? We engineer the AI solution from the ground up.'),
+        4 => array('t' => 'AI WORKFLOWS', 'd' => 'We map, automate, and optimize your most time-consuming processes. The result is a leaner, faster, more profitable operation.'),
         5 => array('t' => 'AI SEO — AIO', 'd' => 'Search has changed. AI is how people find businesses now. We optimize your presence so AI engines recommend you first.'),
-        6 => array('t' => 'AI Training', 'd' => 'We train your people to design, deploy, and manage AI themselves. We make your team dangerous with the most powerful weapon in business.'),
-        7 => array('t' => 'Tool Activation', 'd' => 'You have the subscriptions. We turn them into results. We activate, integrate, and implement the AI tools your business already owns so they drive revenue.'),
-        8 => array('t' => 'AI Yourself', 'd' => 'Your personal AI. Built around you. Your voice, your knowledge, your decisions. Amplify who you are at every scale.'),
-        9 => array('t' => 'AI Your Company', 'd' => 'We build a company-wide AI knowledge base trained on your entire business. Your processes, your IP, your voice, your decisions.'),
-        10 => array('t' => 'Custom System', 'd' => 'Want to own your own AI system? We build it for you from the ground up. Your brand. Your logic. Your rules.'),
-        11 => array('t' => 'Sell Knowledge', 'd' => 'We build an AI system trained on your knowledge, frameworks, and experience — then help you sell it.'),
-        12 => array('t' => 'AI Legacy', 'd' => 'What if your knowledge never disappeared? We build your AI Legacy — a permanent AI trained on everything you know.')
+        6 => array('t' => 'AI TRAINING', 'd' => 'We train your people to design, deploy, and manage AI themselves. We make your team dangerous with the most powerful weapon in business.'),
+        7 => array('t' => 'TOOL ACTIVATION', 'd' => 'You have the subscriptions. We turn them into results. We activate, integrate, and implement the AI tools your business already owns so they drive revenue.'),
+        8 => array('t' => 'AI YOURSELF', 'd' => 'Your personal AI. Built around you. Your voice, your knowledge, your decisions. Amplify who you are at every scale.'),
+        9 => array('t' => 'AI YOUR COMPANY', 'd' => 'We build a company-wide AI knowledge base trained on your entire business. Your processes, your IP, your voice, your decisions — all encoded into a single AI system accessible to every employee. Every department runs faster.'),
+        10 => array('t' => 'CUSTOM SYSTEM', 'd' => 'Want to own your own AI system? We build it for you from the ground up. Your brand. Your logic. Your rules.'),
+        11 => array('t' => 'SELL KNOWLEDGE', 'd' => 'We build an AI system trained on your knowledge, frameworks, and experience — then help you sell it.'),
+        12 => array('t' => 'AI LEGACY', 'd' => 'What if your knowledge never disappeared? We build your AI Legacy — a permanent AI trained on everything you know.')
     );
     for($i=1;$i<=12;$i++) {
         $add_hsc("serv_t_$i", "Service $i Title", 'hp_serv', $serv_defaults[$i]['t']);

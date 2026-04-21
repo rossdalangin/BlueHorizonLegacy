@@ -9,9 +9,9 @@ get_header();
 ?>
 
 <!-- Hero Section -->
-<section class="hero section">
+<section class="hero">
     <div class="container text-center">
-        <p class="hero-eyebrow"><?php echo esc_html( get_theme_mod( 'hero_top', 'Operating in 72 Countries  |  102 Global Partners' ) ); ?></p>
+        <p class="hero-eyebrow"><?php echo esc_html( get_theme_mod( 'hero_top', 'OPERATING IN 72 COUNTRIES  |  102 GLOBAL PARTNERS' ) ); ?></p>
         <h1 class="hero-headline">
             <?php echo wp_kses_post( get_theme_mod( 'hero_title', 'WE ARE YOUR<br>AI DEPARTMENT.' ) ); ?>
         </h1>
@@ -28,7 +28,7 @@ get_header();
 </section>
 
 <!-- Marquee Section -->
-<section class="marquee-section">
+<div class="marquee-section">
     <div class="marquee-track">
         <div class="marquee-content">
             <?php
@@ -37,34 +37,34 @@ get_header();
             ?>
         </div>
     </div>
-</section>
+</div>
 
-<!-- Who Section -->
+<!-- Who Is Section -->
 <section id="who" class="who-section">
     <div class="container">
         <div class="grid-two">
             <div>
-                <h2 class="section-label"><?php echo esc_html( get_theme_mod('who_title', 'WHO IS THE AI AGENCY GROUP') ); ?></h2>
+                <h2 class="section-label"><?php echo esc_html( get_theme_mod('who_title', 'INCREASE PROFITABILITY') ); ?></h2>
                 <div class="section-rule"></div>
             </div>
             <div class="who-text">
-                <?php echo wp_kses_post( get_theme_mod('who_text', 'The AI Agency Group is a global AI infrastructure and implementation firm that builds AI departments and AI employees that replace work, reduce costs, and increase output across your business. With 102 partners spread out all around the world, we serve companies of all sizes all over the globe, from solopreneurs to enterprise organizations and government.') ); ?>
+                <?php echo wp_kses_post( get_theme_mod('who_text', 'Business owners who want more margin without more people or more complexity') ); ?>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Division Section -->
-<section class="who-section section-alt" style="background-color: #000; color: #fff;">
+<!-- Implementation + Training Section (Division) -->
+<section class="foxx-section">
     <div class="container">
         <div class="grid-two">
             <div>
-                <h2 class="section-label" style="color: #fff;"><?php echo esc_html( get_theme_mod('div_title', 'Implementation + Training Division') ); ?></h2>
-                <div class="section-rule" style="background: #fff;"></div>
+                <h2 class="section-label"><?php echo esc_html( get_theme_mod('div_title', 'IMPLEMENTATION + TRAINING DIVISION') ); ?></h2>
+                <div class="section-rule"></div>
             </div>
             <div>
                 <div class="who-text" style="color: #fff; margin-bottom: 40px;">
-                    <?php echo wp_kses_post( get_theme_mod( 'div_text', 'We do not just build AI systems for you. We also give you the capability to build and control them internally.' ) ); ?>
+                    <?php echo wp_kses_post( get_theme_mod( 'div_text', 'Most AI agencies are run by technicians who understand tools but do not understand how businesses actually operate. Every partner inside our firm is an entrepreneur who owns and operates multiple businesses.' ) ); ?>
                 </div>
                 <ul class="modal-benefit-list" style="color: #fff;">
                     <?php
@@ -86,8 +86,8 @@ get_header();
 <!-- Industries Section -->
 <section class="audience-section">
     <div class="container text-center">
-        <h2 class="section-label" style="display: inline-block; color: #000;"><?php echo esc_html( get_theme_mod('ind_title', 'Trusted Across Industries') ); ?></h2>
-        <div class="section-rule" style="margin: -2.5rem auto 3.5rem;"></div>
+        <h2 class="section-label" style="display: inline-block; color: #000; font-family: var(--font-heading);"><?php echo esc_html( get_theme_mod('ind_title', 'Trusted Across Industries') ); ?></h2>
+        <div class="section-rule" style="margin: -2.5rem auto 3.5rem; background: #000;"></div>
         <div class="industry-grid">
             <?php
             $ind_raw = get_theme_mod('ind_list', 'Government, Solopreneurs, Insurance, Private Equity, M&A, Mining, Real Estate, Finance, Healthcare, Legal, E-Commerce, Technology, Speaking, Coaching, Trades, Small Business, Manufacturing, Corporate');
@@ -98,10 +98,10 @@ get_header();
     </div>
 </section>
 
-<!-- Services Section -->
+<!-- Services Grid -->
 <section id="services" class="services-section">
     <div class="container">
-        <h2 class="section-label"><?php echo esc_html( get_theme_mod('serv_title', 'How We Can Help You') ); ?></h2>
+        <h2 class="section-label"><?php echo esc_html( get_theme_mod('serv_title', 'HOW WE CAN HELP YOU') ); ?></h2>
         <div class="section-rule"></div>
         <div class="who-text" style="margin-top: -1.5rem; margin-bottom: 60px; color: #fff; opacity: 0.6; font-weight: 300;">
             <?php echo wp_kses_post( get_theme_mod('serv_sub', 'We are relentlessly focused on one thing. Replacing inefficiency with intelligence and scaling your business without scaling your headcount.') ); ?>
@@ -110,18 +110,18 @@ get_header();
         <div class="dashboard-grid">
             <?php
             $serv_defaults = array(
-                1 => array('t' => 'AI Departments', 'd' => 'We build your entire AI operation. Strategy, systems, employees, and workflows. Designed for your business. Deployed and running in weeks.'),
-                2 => array('t' => 'AI Employees', 'd' => 'AI employees that handle sales, support, and operations 24/7. Replace or amplify your team with AI that never stops.'),
-                3 => array('t' => 'Custom AI Projects', 'd' => 'You dream it. We build it. Have a specific problem or a bold vision? We engineer the AI solution from the ground up.'),
-                4 => array('t' => 'AI Workflows', 'd' => 'We map, automate, and optimize your most time-consuming processes. The result is a leaner, faster, more profitable operation.'),
+                1 => array('t' => 'AI DEPARTMENTS', 'd' => 'We build your entire AI operation. Strategy, systems, employees, and workflows. Designed for your business. Deployed and running in weeks. Most businesses have tools. The ones pulling ahead have departments.'),
+                2 => array('t' => 'AI EMPLOYEES', 'd' => 'AI employees that handle sales, support, and operations 24/7. Replace or amplify your team with AI that never stops.'),
+                3 => array('t' => 'CUSTOM AI PROJECTS', 'd' => 'You dream it. We build it. Have a specific problem or a bold vision? We engineer the AI solution from the ground up.'),
+                4 => array('t' => 'AI WORKFLOWS', 'd' => 'We map, automate, and optimize your most time-consuming processes. The result is a leaner, faster, more profitable operation.'),
                 5 => array('t' => 'AI SEO — AIO', 'd' => 'Search has changed. AI is how people find businesses now. We optimize your presence so AI engines recommend you first.'),
-                6 => array('t' => 'AI Training', 'd' => 'We train your people to design, deploy, and manage AI themselves. We make your team dangerous with the most powerful weapon in business.'),
-                7 => array('t' => 'Tool Activation', 'd' => 'You have the subscriptions. We turn them into results. We activate, integrate, and implement the AI tools your business already owns so they drive revenue.'),
-                8 => array('t' => 'AI Yourself', 'd' => 'Your personal AI. Built around you. Your voice, your knowledge, your decisions. Amplify who you are at every scale.'),
-                9 => array('t' => 'AI Your Company', 'd' => 'We build a company-wide AI knowledge base trained on your entire business. Your processes, your IP, your voice, your decisions.'),
-                10 => array('t' => 'Custom System', 'd' => 'Want to own your own AI system? We build it for you from the ground up. Your brand. Your logic. Your rules.'),
-                11 => array('t' => 'Sell Knowledge', 'd' => 'We build an AI system trained on your knowledge, frameworks, and experience — then help you sell it.'),
-                12 => array('t' => 'AI Legacy', 'd' => 'What if your knowledge never disappeared? We build your AI Legacy — a permanent AI trained on everything you know.')
+                6 => array('t' => 'AI TRAINING', 'd' => 'We train your people to design, deploy, and manage AI themselves. We make your team dangerous with the most powerful weapon in business.'),
+                7 => array('t' => 'TOOL ACTIVATION', 'd' => 'You have the subscriptions. We turn them into results. We activate, integrate, and implement the AI tools your business already owns so they drive revenue.'),
+                8 => array('t' => 'AI YOURSELF', 'd' => 'Your personal AI. Built around you. Your voice, your knowledge, your decisions. Amplify who you are at every scale.'),
+                9 => array('t' => 'AI YOUR COMPANY', 'd' => 'We build a company-wide AI knowledge base trained on your entire business. Your processes, your IP, your voice, your decisions — all encoded into a single AI system accessible to every employee. Every department runs faster.'),
+                10 => array('t' => 'CUSTOM SYSTEM', 'd' => 'Want to own your own AI system? We build it for you from the ground up. Your brand. Your logic. Your rules.'),
+                11 => array('t' => 'SELL KNOWLEDGE', 'd' => 'We build an AI system trained on your knowledge, frameworks, and experience — then help you sell it.'),
+                12 => array('t' => 'AI LEGACY', 'd' => 'What if your knowledge never disappeared? We build your AI Legacy — a permanent AI trained on everything you know.')
             );
             for($i=1; $i<=12; $i++): ?>
             <div class="dashboard-card">
@@ -134,7 +134,7 @@ get_header();
     </div>
 </section>
 
-<!-- Partner Section -->
+<!-- Partner Program Section -->
 <section id="partners" class="partner-section">
     <div class="container">
         <h2 class="section-label"><?php echo esc_html(get_theme_mod('partner_title', 'BUILD YOUR OWN AI AGENCY.')); ?></h2>
@@ -146,10 +146,10 @@ get_header();
         <div class="dashboard-grid">
             <?php
             $partner_defaults = array(
-                1 => array('t' => 'White Label Partner', 'd' => 'License our AI systems, training, and infrastructure under your own brand. You sell it. We build it. Full white label from day one.'),
-                2 => array('t' => 'Direct Seller Partner', 'd' => 'Sell our AI services directly and earn recurring commissions. No build required. The simplest way to monetize your network with AI.'),
-                3 => array('t' => 'AI Agency Builder', 'd' => 'We train you to build, sell, and operate your own AI agency from the ground up. Full curriculum, live support, and a proven system.'),
-                4 => array('t' => 'Partnership', 'd' => 'Open your own AI Agency office and partner with us. We co-own and operate with you. We bring the entire infrastructure. You bring the market. Together we build something that lasts.')
+                1 => array('t' => 'WHITE LABEL PARTNER', 'd' => 'License our AI systems, training, and infrastructure under your own brand. You sell it. We build it. Full white label from day one.'),
+                2 => array('t' => 'DIRECT SELLER PARTNER', 'd' => 'Sell our AI services directly and earn recurring commissions. No build required. The simplest way to monetize your network with AI.'),
+                3 => array('t' => 'AI AGENCY BUILDER', 'd' => 'We train you to build, sell, and operate your own AI agency from the ground up. Full curriculum, live support, and a proven system.'),
+                4 => array('t' => 'PARTNERSHIP', 'd' => 'Open your own AI Agency office and partner with us. We co-own and operate with you. We bring the entire infrastructure. You bring the market. Together we build something that lasts.')
             );
             for($p=1; $p<=4; $p++): ?>
             <div class="dashboard-card">
@@ -166,18 +166,18 @@ get_header();
     </div>
 </section>
 
-<!-- Scale Section -->
+<!-- Every Level. Every Scale. -->
 <section class="partner-section" style="background-color: #fff;">
     <div class="container text-center">
         <h2 class="section-label" style="display: inline-block; color: #000;"><?php echo esc_html( get_theme_mod('scale_title', "EVERY LEVEL.\nEVERY SCALE.") ); ?></h2>
         <div class="section-rule" style="margin: -2.5rem auto 3.5rem; background: #000;"></div>
-        <div class="dashboard-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); border-color: rgba(0,0,0,0.1);">
+        <div class="dashboard-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); border-color: rgba(0,0,0,0.1);">
             <?php
             $scale_defaults = array(
-                1 => array('t' => 'Maximum Leverage', 'd' => 'Solopreneur. You do not need a team. You need AI working for you around the clock. We build your personal AI department so you operate like a company ten times your size.'),
-                2 => array('t' => 'Scale Without Overhead', 'd' => 'Entrepreneur. You are growing. Hiring is expensive and slow. We build the AI layer that scales with your revenue without scaling your payroll. Grow smarter, not bigger.'),
-                3 => array('t' => 'Transform the Operation', 'd' => 'Enterprise. You have the infrastructure. We bring the intelligence. We deploy AI departments across divisions, automate complex workflows, and build the systems that keep you ahead.'),
-                4 => array('t' => 'Public Sector AI', 'd' => 'Government. We build AI infrastructure for public sector organizations. Streamlined operations, reduced costs, and faster service delivery. AI built for accountability, security, and scale.')
+                1 => array('t' => 'MAXIMUM LEVERAGE', 'd' => 'Solopreneur. You do not need a team. You need AI working for you around the clock. We build your personal AI department so you operate like a company ten times your size.'),
+                2 => array('t' => 'SCALE WITHOUT OVERHEAD', 'd' => 'Entrepreneur. You are growing. Hiring is expensive and slow. We build the AI layer that scales with your revenue without scaling your payroll. Grow smarter, not bigger.'),
+                3 => array('t' => 'TRANSFORM THE OPERATION', 'd' => 'Enterprise. You have the infrastructure. We bring the intelligence. We deploy AI departments across divisions, automate complex workflows, and build the systems that keep you ahead.'),
+                4 => array('t' => 'PUBLIC SECTOR AI', 'd' => 'Government. We build AI infrastructure for public sector organizations. Streamlined operations, reduced costs, and faster service delivery. AI built for accountability, security, and scale.')
             );
             for($j=1; $j<=4; $j++): ?>
             <div class="dashboard-card" style="text-align: left; padding: 40px; border-color: rgba(0,0,0,0.1);">
@@ -189,8 +189,8 @@ get_header();
     </div>
 </section>
 
-<!-- Bio Section -->
-<section id="bio" class="foxx-section">
+<!-- Founder Bio -->
+<section id="founder" class="foxx-section">
     <div class="container">
         <div class="grid-two">
             <?php
@@ -219,7 +219,7 @@ get_header();
 </section>
 
 <!-- Proof Section -->
-<section class="proof-section">
+<section id="results" class="proof-section">
     <div class="container">
         <h2 class="section-label text-center" style="display: block; margin: 0 auto 3.5rem;"><?php echo esc_html( get_theme_mod('test_title', 'REAL BUSINESSES. REAL RESULTS.') ); ?></h2>
         <div class="section-rule" style="margin: -2.5rem auto 3.5rem;"></div>
@@ -242,7 +242,7 @@ get_header();
 </section>
 
 <!-- Final CTA -->
-<section class="section text-center" style="background-color: var(--primary-bg);">
+<section id="contact" class="section text-center" style="background-color: var(--primary-bg);">
     <div class="container">
         <h2 style="font-size: clamp(2.5rem, 6vw, 4.5rem); margin-bottom: 30px; line-height: 1; font-weight: 900; font-family: var(--font-heading);">
             <?php echo esc_html(get_theme_mod('cta_title', 'READY TO WORK WITH US?')); ?>
