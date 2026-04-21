@@ -66,10 +66,14 @@
             <?php
             $m_vid = get_theme_mod('m_video', 'https://assets.cdn.filesafe.space/TRgTosvlNzRa9OIbzIzw/media/69d6557da64a04ba15df08cc.mp4');
             if ($m_vid): ?>
-            <div style="margin-bottom: 30px;">
-                <video autoplay muted loop playsinline style="width: 100%; max-height: 400px; object-fit: cover;">
+            <div style="margin-bottom: 30px; position: relative;">
+                <video loop playsinline id="modalVideo" style="width: 100%; max-height: 400px; object-fit: cover;">
                     <source src="<?php echo esc_url($m_vid); ?>" type="video/mp4">
                 </video>
+                <div class="video-controls modal-v-controls">
+                    <button id="toggleModalVideo" class="video-btn">Play/Pause</button>
+                    <button id="toggleModalMute" class="video-btn">Mute/Unmute</button>
+                </div>
             </div>
             <?php endif; ?>
             <h2 class="modal-main-title"><?php echo esc_html(get_theme_mod('m_title', 'SECURE YOUR AI STRATEGY SESSION')); ?></h2>

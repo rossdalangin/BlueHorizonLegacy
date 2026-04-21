@@ -185,8 +185,14 @@ function ai_style_theme_customize_register( $wp_customize ) {
         $add_hsc("scale_d_$j", "Scale $j Desc", 'hp_scale', $scale_defaults[$j]['d']);
     }
 
+    // Lourdes Gant Bio
+    $wp_customize->add_section( 'hp_bio_lourdes', array('title' => 'Lourdes Gant Bio', 'panel' => 'hp_panel') );
+    $add_hsc('bio_lourdes_img', 'Lourdes Image', 'hp_bio_lourdes', 'https://storage.googleapis.com/msgsndr/Kr8UZvrJVfSMH0kwavgk/media/6962c3d3e1863857d19fb358.jpg', 'image');
+    $add_hsc('bio_lourdes_name', 'Name', 'hp_bio_lourdes', 'About Lourdes Gant', 'wp_kses_post');
+    $add_hsc('bio_lourdes_text', 'Bio Text', 'hp_bio_lourdes', "How can we grow and innovate without losing our core identity? As a Fractional AI Chief Sustainability & Impact Officer (CSIO), Lourdes Gant guides businesses in adopting AI as a reliable, principled ally one that preserves institutional knowledge, informs strategic decisions, and nurtures continuity across teams. Her work transcends the rush of trendy technology; instead, she builds grounded, human-centered systems engineered for longevity and meaningful impact. With expertise spanning sustainable aquaculture, impact investing, and enterprise strategy, Lourdes brings a discerning, long-term perspective to AI implementation. She specializes in translating deep human expertise into CoreBrain-style AI systems that minimize reliance on individuals, safeguard organizational memory, and enable teams to work with clarity and confidence. One of the founders of BC + AI and a partner in an AI Agency serving founder-led businesses across North America and Asia, Lourdes is known for her thoughtful methodology, calm execution, and talent for converting complexity into elegant, repeatable frameworks.", 'textarea');
+
     // Bio
-    $wp_customize->add_section( 'hp_bio', array('title' => 'Founder Bio', 'panel' => 'hp_panel') );
+    $wp_customize->add_section( 'hp_bio', array('title' => 'JT Foxx Bio', 'panel' => 'hp_panel') );
     $add_hsc('bio_img', 'Founder Image', 'hp_bio', '', 'image');
     $add_hsc('bio_name', 'Name', 'hp_bio', "WHO IS\nJT FOXX.", 'wp_kses_post');
     $add_hsc('bio_quote', 'Quote', 'hp_bio', '"BUSINESS IS WAR. AI IS THE NEW WEAPON."');

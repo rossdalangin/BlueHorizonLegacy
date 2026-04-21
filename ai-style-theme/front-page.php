@@ -13,9 +13,13 @@ get_header();
     <?php
     $hero_vid = get_theme_mod('hero_video', 'https://assets.cdn.filesafe.space/TRgTosvlNzRa9OIbzIzw/media/69d528baad0e3e32704ebe43.mp4');
     if ($hero_vid): ?>
-    <video autoplay muted loop playsinline class="hero-video-bg">
+    <video autoplay muted loop playsinline class="hero-video-bg" id="heroVideo">
         <source src="<?php echo esc_url($hero_vid); ?>" type="video/mp4">
     </video>
+    <div class="video-controls">
+        <button id="toggleHeroVideo" class="video-btn" aria-label="Toggle Video">Play/Pause</button>
+        <button id="toggleHeroMute" class="video-btn" aria-label="Toggle Mute">Mute/Unmute</button>
+    </div>
     <?php endif; ?>
 
     <div class="container text-center">
@@ -192,6 +196,32 @@ get_header();
                 <p style="text-transform: none; letter-spacing: 0; color: #333; font-weight: 400; opacity: 0.8; font-size: 1rem;"><?php echo esc_html(get_theme_mod("scale_d_$j", $scale_defaults[$j]['d'])); ?></p>
             </div>
             <?php endfor; ?>
+        </div>
+    </div>
+</section>
+
+<!-- Lourdes Gant Bio -->
+<section id="lourdes" class="foxx-section" style="background-color: var(--primary-bg);">
+    <div class="container">
+        <div class="grid-two">
+            <?php
+            $lourdes_img = get_theme_mod('bio_lourdes_img', 'https://storage.googleapis.com/msgsndr/Kr8UZvrJVfSMH0kwavgk/media/6962c3d3e1863857d19fb358.jpg');
+            $lourdes_style = $lourdes_img ? "background-image: url('".esc_url($lourdes_img)."'); background-size: cover; background-position: center;" : "background: #050505;";
+            ?>
+            <div class="bio-visual" style="height: 650px; display: flex; align-items: center; justify-content: center; <?php echo $lourdes_style; ?>">
+                <?php if (!$lourdes_img): ?>
+                <div style="color: var(--accent-teal); text-align: center; opacity: 0.2;">
+                    <h2 style="font-size: 4rem;"><?php echo esc_html( get_theme_mod('bio_lourdes_name', "About Lourdes Gant") ); ?></h2>
+                </div>
+                <?php endif; ?>
+            </div>
+            <div>
+                <h2 class="section-label"><?php echo esc_html( get_theme_mod('bio_lourdes_name', "About Lourdes Gant") ); ?></h2>
+                <div class="section-rule"></div>
+                <div class="who-text" style="color: #fff;">
+                    <?php echo wp_kses_post( get_theme_mod('bio_lourdes_text', "How can we grow and innovate without losing our core identity? As a Fractional AI Chief Sustainability & Impact Officer (CSIO), Lourdes Gant guides businesses in adopting AI as a reliable, principled ally one that preserves institutional knowledge, informs strategic decisions, and nurtures continuity across teams.") ); ?>
+                </div>
+            </div>
         </div>
     </div>
 </section>

@@ -20,6 +20,43 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Video Control Logic
+    const heroVideo = document.getElementById('heroVideo');
+    const modalVideo = document.getElementById('modalVideo');
+
+    const toggleHeroVideo = document.getElementById('toggleHeroVideo');
+    const toggleHeroMute = document.getElementById('toggleHeroMute');
+    const toggleModalVideo = document.getElementById('toggleModalVideo');
+    const toggleModalMute = document.getElementById('toggleModalMute');
+
+    if (heroVideo) {
+        if (toggleHeroVideo) {
+            toggleHeroVideo.addEventListener('click', () => {
+                if (heroVideo.paused) heroVideo.play();
+                else heroVideo.pause();
+            });
+        }
+        if (toggleHeroMute) {
+            toggleHeroMute.addEventListener('click', () => {
+                heroVideo.muted = !heroVideo.muted;
+            });
+        }
+    }
+
+    if (modalVideo) {
+        if (toggleModalVideo) {
+            toggleModalVideo.addEventListener('click', () => {
+                if (modalVideo.paused) modalVideo.play();
+                else modalVideo.pause();
+            });
+        }
+        if (toggleModalMute) {
+            toggleModalMute.addEventListener('click', () => {
+                modalVideo.muted = !modalVideo.muted;
+            });
+        }
+    }
+
     // Full-Screen Strategy Modal Logic
     const strategyModal = document.getElementById('strategy-modal');
     const modalCloseBtn = document.getElementById('strategyModalClose');
@@ -40,12 +77,22 @@ document.addEventListener('DOMContentLoaded', function() {
             strategyModal.style.display = 'block';
             modalBackdrop.style.display = 'block';
             document.body.style.overflow = 'hidden';
+
+            // Custom Requirement: Stop Hero Video, Start Modal Audio/Video
+            if (heroVideo) heroVideo.pause();
+            if (modalVideo) {
+                modalVideo.muted = false; // Activate Audio
+                modalVideo.play();
+            }
         };
 
         const closeModal = () => {
             strategyModal.style.display = 'none';
             modalBackdrop.style.display = 'none';
             document.body.style.overflow = '';
+
+            if (modalVideo) modalVideo.pause();
+            if (heroVideo) heroVideo.play();
         };
 
         openModalBtns.forEach(btn => {
