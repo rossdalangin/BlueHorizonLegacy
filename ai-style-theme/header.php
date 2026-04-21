@@ -6,62 +6,63 @@
     <?php wp_head(); ?>
     <style>
         .site-header {
-            background-color: var(--primary-navy);
-            padding: 1.5rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background-color: transparent;
+            position: absolute;
+            width: 100%;
+            z-index: 100;
+            padding: 30px 0;
         }
         .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        .site-logo a {
-            color: var(--text-white);
+        .logo a {
+            color: #fff;
             text-decoration: none;
             font-family: var(--font-heading);
-            font-size: 1.5rem;
             font-weight: 700;
+            font-size: 1.5rem;
         }
         .main-navigation ul {
             list-style: none;
+            display: flex;
+            gap: 2rem;
             margin: 0;
             padding: 0;
-            display: flex;
-        }
-        .main-navigation li {
-            margin-left: 2rem;
         }
         .main-navigation a {
-            color: var(--text-off-white);
+            color: #fff;
             text-decoration: none;
             font-size: 0.9rem;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-            transition: color 0.3s ease;
+            font-weight: 600;
         }
-        .main-navigation a:hover {
-            color: var(--accent-teal);
+        .header-cta .btn {
+            padding: 0.8rem 1.5rem;
+            font-size: 0.8rem;
         }
     </style>
 </head>
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
-<header id="masthead" class="site-header">
+<header class="site-header">
     <div class="container header-container">
-        <div class="site-logo">
-            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">AI STYLE THEME</a>
+        <div class="logo">
+            <a href="<?php echo esc_url( home_url( '/' ) ); ?>">AI AGENCY GROUP</a>
         </div>
-        <nav id="site-navigation" class="main-navigation">
+        <nav class="main-navigation">
             <?php
-            wp_nav_menu(
-                array(
-                    'theme_location' => 'menu-1',
-                    'menu_id'        => 'primary-menu',
-                    'fallback_cb'    => false,
-                )
-            );
+            wp_nav_menu( array(
+                'theme_location' => 'menu-1',
+                'menu_id'        => 'primary-menu',
+                'fallback_cb'    => false,
+            ) );
             ?>
         </nav>
+        <div class="header-cta">
+            <a href="#" class="btn btn-teal open-modal">Book a Call</a>
+        </div>
     </div>
 </header>
 <main id="primary" class="site-main">

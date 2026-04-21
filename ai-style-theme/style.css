@@ -4,180 +4,152 @@ Theme URI: http://example.com/ai-style-theme
 Author: Jules
 Author URI: http://example.com
 Description: A high-end, professional WordPress landing page design for an elite AI intelligence platform. Flat and minimalist.
-Version: 1.1.0
+Version: 1.3.0
 Text Domain: ai-style-theme
 */
 
 :root {
     --primary-navy: #001f3f;
-    --primary-charcoal: #0a0a0a;
-    --accent-teal: #00b4b4;
+    --primary-charcoal: #080808;
+    --accent-teal: #00e5e5;
     --accent-gold: #c5a028;
     --text-white: #ffffff;
-    --text-off-white: #d1d1d1;
-    --bg-darker: #050505;
+    --text-off-white: #e0e0e0;
     --font-heading: 'Montserrat', sans-serif;
     --font-body: 'Inter', sans-serif;
     --spacing-xl: 120px;
-    --spacing-lg: 80px;
-    --spacing-md: 40px;
 }
 
-/* Base Styles */
 body {
     background-color: var(--primary-charcoal);
     color: var(--text-off-white);
     font-family: var(--font-body);
-    line-height: 1.7;
     margin: 0;
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
-    font-weight: 300;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-heading);
-    font-weight: 700;
-    color: var(--text-white);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 1.5rem;
-}
-
-a {
-    color: var(--accent-teal);
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-a:hover {
-    color: var(--text-white);
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 0 40px;
 }
 
-/* Geometric Elements & Borders */
-.flat-border {
-    border: 1px solid rgba(255, 255, 255, 0.1);
+/* Typography */
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    color: var(--text-white);
+    text-transform: uppercase;
+    font-weight: 700;
 }
 
-.geometric-bg {
-    background-image:
-        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-    background-size: 60px 60px;
-}
+.hero-title { font-size: clamp(3rem, 8vw, 6rem); line-height: 1; margin-bottom: 2rem; }
+.hero-subtitle { font-size: 1.25rem; max-width: 800px; margin: 0 auto 3rem; opacity: 0.8; }
 
 /* Sections */
-.section {
-    padding: var(--spacing-xl) 0;
-}
-
-.section-alt {
-    background-color: var(--bg-darker);
-}
+.section { padding: var(--spacing-xl) 0; }
+.section-alt { background-color: #0c0c0c; }
+.flat-border { border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1); }
 
 /* Buttons */
 .btn {
     display: inline-block;
-    padding: 1.25rem 2.5rem;
-    border-radius: 0;
+    padding: 1.2rem 2.5rem;
     text-decoration: none;
     font-weight: 600;
-    font-size: 0.9rem;
     text-transform: uppercase;
-    letter-spacing: 0.15em;
-    transition: all 0.3s ease;
+    letter-spacing: 0.1em;
+    transition: 0.3s;
     cursor: pointer;
-    border: 1px solid transparent;
+    border: none;
+}
+.btn-teal { background-color: var(--accent-teal); color: #000; }
+.btn-teal:hover { background-color: #fff; }
+
+/* Components */
+.top-bar {
+    background-color: #111;
+    padding: 10px 0;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
-.btn-teal {
-    background-color: var(--accent-teal);
-    color: #000;
+.marquee-wrapper {
+    background: #000;
+    padding: 20px 0;
+    overflow: hidden;
+    white-space: nowrap;
 }
-
-.btn-teal:hover {
-    background-color: transparent;
-    border-color: var(--accent-teal);
-    color: var(--accent-teal);
-}
-
-.btn-outline-gold {
-    border-color: var(--accent-gold);
-    color: var(--accent-gold);
-}
-
-.btn-outline-gold:hover {
-    background-color: var(--accent-gold);
-    color: #000;
-}
-
-/* Typography Overrides */
-.text-center { text-align: center; }
-.text-uppercase { text-transform: uppercase; }
-.tracking-widest { letter-spacing: 0.2em; }
-
-.section-title {
-    font-size: 2.5rem;
-    position: relative;
+.marquee-content {
     display: inline-block;
-    margin-bottom: 3rem;
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-white);
+    animation: marquee 40s linear infinite;
+    text-transform: uppercase;
+}
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
 }
 
-.section-title::after {
+.grid-two {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+}
+
+.section-label {
+    font-size: 2.5rem;
+    line-height: 1.1;
+    position: relative;
+}
+.section-label::after {
     content: '';
-    position: absolute;
-    bottom: -15px;
-    left: 0;
-    width: 60px;
-    height: 3px;
-    background-color: var(--accent-teal);
+    display: block;
+    width: 50px;
+    height: 4px;
+    background: var(--accent-teal);
+    margin-top: 20px;
 }
 
-/* Dashboard-like Grid */
+.industry-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+.industry-grid span {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    opacity: 0.5;
+}
+
 .dashboard-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
+    margin-top: 4rem;
 }
-
 .dashboard-card {
-    background-color: rgba(255, 255, 255, 0.01);
-    padding: 2.5rem;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    transition: all 0.3s ease;
+    background: rgba(255,255,255,0.02);
+    padding: 3rem;
+    border: 1px solid rgba(255,255,255,0.05);
 }
-
-.dashboard-card:hover {
-    border-color: var(--accent-teal);
-    background-color: rgba(255, 255, 255, 0.02);
-}
-
-.card-icon {
-    width: 48px;
-    height: 48px;
-    border: 1px solid var(--accent-teal);
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.card-num {
+    font-family: var(--font-heading);
+    font-size: 2rem;
     color: var(--accent-teal);
-    font-weight: 700;
+    margin-bottom: 1rem;
 }
 
 /* Responsive */
-@media (max-width: 768px) {
-    :root {
-        --spacing-xl: 80px;
-    }
-    .section-title {
-        font-size: 2rem;
-    }
-    .container {
-        padding: 0 20px;
-    }
+@media (max-width: 992px) {
+    .grid-two { grid-template-columns: 1fr; gap: 3rem; }
+    .hero-title { font-size: 3.5rem; }
 }

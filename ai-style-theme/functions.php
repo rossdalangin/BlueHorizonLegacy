@@ -2,8 +2,6 @@
 /**
  * AI Style Theme functions and definitions
  *
- * @link https://developer.wordpress.org/themes/basics/theme-functions/
- *
  * @package AI_Style_Theme
  */
 
@@ -33,11 +31,14 @@ add_action( 'after_setup_theme', 'ai_style_theme_setup' );
 
 function ai_style_theme_scripts() {
     wp_enqueue_style( 'ai-style-theme-fonts', 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Montserrat:wght@700&display=swap', array(), null );
-    wp_enqueue_style( 'ai-style-theme-style', get_stylesheet_uri(), array(), '1.1.0' );
-    wp_enqueue_script( 'ai-style-theme-scripts', get_template_directory_uri() . '/assets/js/theme-scripts.js', array(), '1.1.0', true );
+    wp_enqueue_style( 'ai-style-theme-style', get_stylesheet_uri(), array(), '1.4.0' );
+    wp_enqueue_script( 'ai-style-theme-scripts', get_template_directory_uri() . '/assets/js/theme-scripts.js', array(), '1.4.0', true );
 }
 add_action( 'wp_enqueue_scripts', 'ai_style_theme_scripts' );
 
+/**
+ * Register widget area.
+ */
 function ai_style_theme_widgets_init() {
 	register_sidebar(
 		array(
@@ -62,59 +63,47 @@ function ai_style_theme_customize_register( $wp_customize ) {
         'priority' => 30,
     ) );
 
+    $add_sc = function($id, $label, $section, $default = '', $type = 'text') use ($wp_customize) {
+        $wp_customize->add_setting( $id, array(
+            'default' => $default,
+            'sanitize_callback' => ($type == 'textarea' ? 'wp_kses_post' : ($type == 'url' ? 'esc_url_raw' : 'sanitize_text_field')),
+        ) );
+        $wp_customize->add_control( $id, array(
+            'label' => $label,
+            'section' => $section,
+            'type' => $type,
+        ) );
+    };
+
     // Hero Section
-    $wp_customize->add_section( 'hero_section', array(
-        'title' => __( 'Hero Section', 'ai-style-theme' ),
-        'panel' => 'homepage_settings',
-    ) );
-    $wp_customize->add_setting( 'hero_title', array('default' => 'We Are Your AI Department.', 'sanitize_callback' => 'sanitize_text_field'));
-    $wp_customize->add_control( 'hero_title', array('label' => __( 'Hero Title', 'ai-style-theme' ), 'section' => 'hero_section', 'type' => 'text'));
-    $wp_customize->add_setting( 'hero_subtitle', array('default' => 'We design, build, and deploy AI Departments that scale your business without scaling your headcount. Done for you. Running in weeks.', 'sanitize_callback' => 'textarea_sanitize'));
-    $wp_customize->add_control( 'hero_subtitle', array('label' => __( 'Hero Subtitle', 'ai-style-theme' ), 'section' => 'hero_section', 'type' => 'textarea'));
-    $wp_customize->add_setting( 'hero_cta_text', array('default' => 'Book a Strategy Call', 'sanitize_callback' => 'sanitize_text_field'));
-    $wp_customize->add_control( 'hero_cta_text', array('label' => __( 'Hero CTA Text', 'ai-style-theme' ), 'section' => 'hero_section', 'type' => 'text'));
+    $wp_customize->add_section( 'hero_section', array('title' => 'Hero Section', 'panel' => 'homepage_settings') );
+    $add_sc('top_bar_text', 'Top Bar Text', 'hero_section', 'Operating in 72 Countries  |  102 Global Partners');
+    $add_sc('hero_title', 'Hero Title', 'hero_section', 'We Are Your<br>AI Department.', 'textarea');
+    $add_sc('hero_subtitle', 'Hero Subtitle', 'hero_section', 'We design, build, and deploy AI Departments that scale your business without scaling your headcount. Done for you. Running in weeks.', 'textarea');
+    $add_sc('hero_cta_text', 'CTA Button Text', 'hero_section', 'Book a Strategy Call');
+
+    // Marquee Section
+    $wp_customize->add_section( 'marquee_section', array('title' => 'Marquee Text', 'panel' => 'homepage_settings') );
+    $add_sc('marquee_text', 'Marquee Content', 'marquee_section', 'AI Departments ✦ AI Employees ✦ Custom AI Projects ✦ AI Workflows ✦ AI SEO — AIO ✦ Tool Activation ✦ AI Training ✦ AI Yourself ✦ 72 Countries ✦ Done For You ✦ Enterprise to Solopreneur', 'textarea');
 
     // About Section
-    $wp_customize->add_section( 'about_section', array(
-        'title' => __( 'Who We Are', 'ai-style-theme' ),
-        'panel' => 'homepage_settings',
-    ) );
-    $wp_customize->add_setting( 'about_title', array('default' => 'Who Is The AI Agency Group', 'sanitize_callback' => 'sanitize_text_field'));
-    $wp_customize->add_control( 'about_title', array('label' => __( 'About Title', 'ai-style-theme' ), 'section' => 'about_section', 'type' => 'text'));
-    $wp_customize->add_setting( 'about_content', array('default' => 'The AI Agency Group is a global AI infrastructure and implementation firm that builds AI departments and AI employees that replace work, reduce costs, and increase output across your business.', 'sanitize_callback' => 'textarea_sanitize'));
-    $wp_customize->add_control( 'about_content', array('label' => __( 'About Content', 'ai-style-theme' ), 'section' => 'about_section', 'type' => 'textarea'));
+    $wp_customize->add_section( 'about_section', array('title' => 'About Section', 'panel' => 'homepage_settings') );
+    $add_sc('about_title', 'About Title', 'about_section', 'Who Is The AI Agency Group');
+    $add_sc('about_content', 'About Content', 'about_section', 'The AI Agency Group is a global AI infrastructure and implementation firm that builds AI departments and AI employees that replace work, reduce costs, and increase output across your business.', 'textarea');
 
-    // Services Section
-    $wp_customize->add_section( 'services_section', array(
-        'title' => __( 'Services Section', 'ai-style-theme' ),
-        'panel' => 'homepage_settings',
-    ) );
-    $wp_customize->add_setting( 'services_title', array('default' => 'How We Can Help You', 'sanitize_callback' => 'sanitize_text_field'));
-    $wp_customize->add_control( 'services_title', array('label' => __( 'Services Title', 'ai-style-theme' ), 'section' => 'services_section', 'type' => 'text'));
-
-    // CTA Section
-    $wp_customize->add_section( 'cta_section', array(
-        'title' => __( 'CTA Section', 'ai-style-theme' ),
-        'panel' => 'homepage_settings',
-    ) );
-    $wp_customize->add_setting( 'cta_title', array('default' => 'Ready to Work With Us?', 'sanitize_callback' => 'sanitize_text_field'));
-    $wp_customize->add_control( 'cta_title', array('label' => __( 'CTA Title', 'ai-style-theme' ), 'section' => 'cta_section', 'type' => 'text'));
-    $wp_customize->add_setting( 'cta_content', array('default' => 'The businesses winning right now are not smarter. They are better armed. Let us build your AI department.', 'sanitize_callback' => 'textarea_sanitize'));
-    $wp_customize->add_control( 'cta_content', array('label' => __( 'CTA Content', 'ai-style-theme' ), 'section' => 'cta_section', 'type' => 'textarea'));
+    // Bio Section
+    $wp_customize->add_section( 'bio_section', array('title' => 'Bio Section', 'panel' => 'homepage_settings') );
+    $add_sc('bio_title', 'Bio Title', 'bio_section', 'Who Is JT Foxx.');
+    $add_sc('bio_name', 'Name', 'bio_section', 'JT Foxx');
+    $add_sc('bio_tagline', 'Tagline', 'bio_section', '"Business is War. AI is the New Weapon."');
+    $add_sc('bio_content', 'Bio Content', 'bio_section', 'JT Foxx is a global entrepreneur, investor, and one of the most sought-after voices in business today...', 'textarea');
 
     // Modal Settings
-    $wp_customize->add_section( 'modal_section', array(
-        'title' => __( 'Modal Settings (Popup)', 'ai-style-theme' ),
-        'priority' => 31,
-    ) );
-    $wp_customize->add_setting( 'modal_title', array('default' => 'Secure Your AI Strategy Session', 'sanitize_callback' => 'sanitize_text_field'));
-    $wp_customize->add_control( 'modal_title', array('label' => __( 'Modal Title', 'ai-style-theme' ), 'section' => 'modal_section', 'type' => 'text'));
-    $wp_customize->add_setting( 'modal_subtitle', array('default' => '15–30 Minutes  &middot;  No Obligation  &middot;  Leave with a Clear Plan', 'sanitize_callback' => 'textarea_sanitize'));
-    $wp_customize->add_control( 'modal_subtitle', array('label' => __( 'Modal Subtitle', 'ai-style-theme' ), 'section' => 'modal_section', 'type' => 'text'));
-    $wp_customize->add_setting( 'modal_info', array('default' => 'Limited availability — if a slot is visible, it just opened', 'sanitize_callback' => 'sanitize_text_field'));
-    $wp_customize->add_control( 'modal_info', array('label' => __( 'Modal Info Text', 'ai-style-theme' ), 'section' => 'modal_section', 'type' => 'text'));
-    $wp_customize->add_setting( 'modal_iframe_url', array('default' => 'https://forms.aiagencygroup.ai/ai-strategy-session', 'sanitize_callback' => 'esc_url_raw'));
-    $wp_customize->add_control( 'modal_iframe_url', array('label' => __( 'Iframe URL', 'ai-style-theme' ), 'section' => 'modal_section', 'type' => 'url'));
+    $wp_customize->add_section( 'modal_section', array('title' => 'Modal Settings (Popup)', 'priority' => 31) );
+    $add_sc('modal_title', 'Modal Title', 'modal_section', 'Secure Your AI Strategy Session');
+    $add_sc('modal_subtitle', 'Modal Subtitle', 'modal_section', '15–30 Minutes  &middot;  No Obligation  &middot;  Leave with a Clear Plan');
+    $add_sc('modal_info', 'Modal Info Text', 'modal_section', 'Limited availability — if a slot is visible, it just opened');
+    $add_sc('modal_iframe_url', 'Iframe URL', 'modal_section', 'https://forms.aiagencygroup.ai/ai-strategy-session', 'url');
 }
 add_action( 'customize_register', 'ai_style_theme_customize_register' );
 
