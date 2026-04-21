@@ -9,8 +9,9 @@
             background-color: transparent;
             position: absolute;
             width: 100%;
-            z-index: 100;
-            padding: 30px 0;
+            z-index: 1000;
+            padding: 25px 0;
+            transition: all 0.3s ease;
         }
         .header-container {
             display: flex;
@@ -21,26 +22,34 @@
             color: #fff;
             text-decoration: none;
             font-family: var(--font-heading);
-            font-weight: 700;
-            font-size: 1.5rem;
+            font-weight: 800;
+            font-size: 1.6rem;
+            letter-spacing: -0.02em;
         }
         .main-navigation ul {
             list-style: none;
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
             margin: 0;
             padding: 0;
         }
         .main-navigation a {
             color: #fff;
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             text-transform: uppercase;
-            font-weight: 600;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            opacity: 0.8;
+            transition: opacity 0.3s;
         }
+        .main-navigation a:hover { opacity: 1; }
         .header-cta .btn {
-            padding: 0.8rem 1.5rem;
+            padding: 0.9rem 1.8rem;
             font-size: 0.8rem;
+        }
+        @media (max-width: 992px) {
+            .main-navigation { display: none; }
         }
     </style>
 </head>

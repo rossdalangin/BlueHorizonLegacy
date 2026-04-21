@@ -30,9 +30,9 @@ function ai_style_theme_setup() {
 add_action( 'after_setup_theme', 'ai_style_theme_setup' );
 
 function ai_style_theme_scripts() {
-    wp_enqueue_style( 'ai-style-theme-fonts', 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Montserrat:wght@700&display=swap', array(), null );
-    wp_enqueue_style( 'ai-style-theme-style', get_stylesheet_uri(), array(), '1.4.0' );
-    wp_enqueue_script( 'ai-style-theme-scripts', get_template_directory_uri() . '/assets/js/theme-scripts.js', array(), '1.4.0', true );
+    wp_enqueue_style( 'ai-style-theme-fonts', 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@700;800&display=swap', array(), null );
+    wp_enqueue_style( 'ai-style-theme-style', get_stylesheet_uri(), array(), '1.5.0' );
+    wp_enqueue_script( 'ai-style-theme-scripts', get_template_directory_uri() . '/assets/js/theme-scripts.js', array(), '1.5.0', true );
 }
 add_action( 'wp_enqueue_scripts', 'ai_style_theme_scripts' );
 
@@ -80,7 +80,7 @@ function ai_style_theme_customize_register( $wp_customize ) {
     $add_sc('top_bar_text', 'Top Bar Text', 'hero_section', 'Operating in 72 Countries  |  102 Global Partners');
     $add_sc('hero_title', 'Hero Title', 'hero_section', 'We Are Your<br>AI Department.', 'textarea');
     $add_sc('hero_subtitle', 'Hero Subtitle', 'hero_section', 'We design, build, and deploy AI Departments that scale your business without scaling your headcount. Done for you. Running in weeks.', 'textarea');
-    $add_sc('hero_cta_text', 'CTA Button Text', 'hero_section', 'Book a Strategy Call');
+    $add_sc('hero_cta_text', 'Hero CTA Text', 'hero_section', 'Book a Strategy Call');
 
     // Marquee Section
     $wp_customize->add_section( 'marquee_section', array('title' => 'Marquee Text', 'panel' => 'homepage_settings') );
@@ -89,24 +89,12 @@ function ai_style_theme_customize_register( $wp_customize ) {
     // About Section
     $wp_customize->add_section( 'about_section', array('title' => 'About Section', 'panel' => 'homepage_settings') );
     $add_sc('about_title', 'About Title', 'about_section', 'Who Is The AI Agency Group');
-    $add_sc('about_content', 'About Content', 'about_section', 'The AI Agency Group is a global AI infrastructure and implementation firm that builds AI departments and AI employees that replace work, reduce costs, and increase output across your business.', 'textarea');
-
-    // Bio Section
-    $wp_customize->add_section( 'bio_section', array('title' => 'Bio Section', 'panel' => 'homepage_settings') );
-    $add_sc('bio_title', 'Bio Title', 'bio_section', 'Who Is JT Foxx.');
-    $add_sc('bio_name', 'Name', 'bio_section', 'JT Foxx');
-    $add_sc('bio_tagline', 'Tagline', 'bio_section', '"Business is War. AI is the New Weapon."');
-    $add_sc('bio_content', 'Bio Content', 'bio_section', 'JT Foxx is a global entrepreneur, investor, and one of the most sought-after voices in business today...', 'textarea');
 
     // Modal Settings
     $wp_customize->add_section( 'modal_section', array('title' => 'Modal Settings (Popup)', 'priority' => 31) );
     $add_sc('modal_title', 'Modal Title', 'modal_section', 'Secure Your AI Strategy Session');
-    $add_sc('modal_subtitle', 'Modal Subtitle', 'modal_section', '15–30 Minutes  &middot;  No Obligation  &middot;  Leave with a Clear Plan');
-    $add_sc('modal_info', 'Modal Info Text', 'modal_section', 'Limited availability — if a slot is visible, it just opened');
+    $add_sc('modal_subtitle', 'Modal Subtitle', 'modal_section', '15–30 Minutes &middot; No Obligation &middot; Leave with a Clear Plan', 'textarea');
+    $add_sc('modal_info', 'Modal Info Text', 'modal_section', 'Limited Availability | If you see a time available, a slot just opened');
     $add_sc('modal_iframe_url', 'Iframe URL', 'modal_section', 'https://forms.aiagencygroup.ai/ai-strategy-session', 'url');
 }
 add_action( 'customize_register', 'ai_style_theme_customize_register' );
-
-function textarea_sanitize( $input ) {
-    return wp_kses_post( $input );
-}
