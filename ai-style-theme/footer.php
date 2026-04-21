@@ -7,7 +7,7 @@
                 <div class="footer-logo" style="margin-bottom: 2.5rem;">
                     <a href="<?php echo esc_url( home_url( '/' ) ); ?>" style="color: #fff; font-size: 1.6rem; font-family: var(--font-heading); font-weight: 900; letter-spacing: 0.1em;"><?php echo esc_html(get_theme_mod('footer_logo', 'AI AGENCY GROUP')); ?></a>
                 </div>
-                <p style="opacity: 0.5; max-width: 400px; font-size: 1rem;">We design, build, and deploy AI Departments for businesses in 72 countries. Solopreneurs to Enterprise.</p>
+                <p style="opacity: 0.5; max-width: 400px; font-size: 1rem; color: #fff; text-transform: none; letter-spacing: 0;">We design, build, and deploy AI Departments for businesses in 72 countries. Solopreneurs to Enterprise.</p>
             </div>
 
             <div class="footer-col">
@@ -57,13 +57,13 @@
     </div>
 </footer>
 
-<div id="call-modal" class="modal">
+<div id="strategy-modal" class="modal">
     <div class="modal-content">
-        <span class="close-modal">&times;</span>
+        <span class="close-modal" id="strategyModalClose">&times;</span>
 
         <div class="modal-header-clean">
             <h2 class="modal-main-title"><?php echo esc_html(get_theme_mod('m_title', 'Secure Your AI Strategy Session')); ?></h2>
-            <p class="modal-subtitle"><?php echo esc_html(get_theme_mod('m_sub', '15–30 Minutes &middot; No Obligation &middot; Leave with a Clear Plan')); ?></p>
+            <p class="modal-subtitle"><?php echo esc_html(get_theme_mod('m_sub', '15–30 Minutes · No Obligation · Leave with a Clear Plan')); ?></p>
         </div>
 
         <div class="modal-body-scroll">
@@ -72,9 +72,6 @@
                 <div class="modal-form-area-centered">
                     <div class="wpcf7-wrapper">
                         <?php echo do_shortcode( get_theme_mod( 'm_cf7', '[contact-form-7 id="123" title="Book a Call"]' ) ); ?>
-                    </div>
-                    <div class="modal-notice">
-                        Limited Availability | If you see a time available, a slot just opened
                     </div>
                 </div>
 
@@ -120,7 +117,7 @@
 
                     <div class="modal-info-section">
                         <h3 class="modal-section-title"><?php echo esc_html(get_theme_mod('m_delay_title', 'Every Month You Delay Has a Cost')); ?></h3>
-                        <p class="modal-section-desc">The gap is already happening. Companies implementing AI at a system level are moving faster. Waiting means falling behind.</p>
+                        <p class="modal-section-desc">The gap is already happening. Companies implementing AI at a system level are reducing costs, increasing output, and moving faster. Waiting means falling behind.</p>
                         <ol class="delay-list">
                             <li>You continue paying for work AI could handle at a fraction of the cost</li>
                             <li>Your competitors move faster and operate more efficiently every quarter</li>
@@ -164,6 +161,8 @@
         </div>
     </div>
 </div>
+
+<div class="modal-backdrop" id="strategyModalBackdrop"></div>
 
 <?php wp_footer(); ?>
 </body>

@@ -8,11 +8,17 @@
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 
+<div id="top-bar" class="top-bar">
+    <div class="container">
+        <?php echo esc_html( get_theme_mod( 'hero_top', 'Operating in 72 Countries  |  102 Global Partners' ) ); ?>
+    </div>
+</div>
+
 <header id="masthead" class="site-header">
     <div class="container">
         <div style="display: flex; justify-content: space-between; align-items: center;">
             <div class="site-branding">
-                <a href="<?php echo esc_url( home_url( '/' ) ); ?>" style="color: #fff; font-size: 1.6rem; font-family: var(--font-heading); font-weight: 900; text-decoration: none; letter-spacing: 0.1em;">AI AGENCY GROUP</a>
+                <a href="<?php echo esc_url( home_url( '/' ) ); ?>" style="color: #fff; font-size: 1.4rem; font-family: var(--font-heading); font-weight: 900; text-decoration: none; letter-spacing: 0.1em;"><?php echo esc_html(get_theme_mod('footer_logo', 'AI AGENCY GROUP')); ?></a>
             </div>
 
             <nav id="site-navigation" class="main-navigation">
@@ -28,7 +34,7 @@
                         'menu_id'        => 'primary-menu',
                         'container'      => 'div',
                         'container_class' => 'menu-container',
-                        'items_wrap'     => '<ul id="%1$s" class="%2$s nav-menu">%3$s<li class="menu-item-cta"><a href="#" class="open-modal">Book a Call</a></li></ul>',
+                        'items_wrap'     => '<ul id="%1$s" class="%2$s nav-menu">%3$s<li class="menu-item-cta"><a href="#" class="open-modal-btn">Book a Call</a></li></ul>',
                     )
                 );
                 ?>

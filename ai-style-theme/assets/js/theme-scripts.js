@@ -20,30 +20,40 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    const modal = document.getElementById('call-modal');
-    const openBtns = document.querySelectorAll('.open-modal');
-    const closeBtn = document.querySelector('.close-modal');
+    // Full-Screen Strategy Modal Logic
+    const strategyModal = document.getElementById('strategy-modal');
+    const modalCloseBtn = document.getElementById('strategyModalClose');
+    const modalBackdrop = document.getElementById('strategyModalBackdrop');
+    const openModalBtns = document.querySelectorAll('.open-modal-btn');
 
-    if (modal) {
-        openBtns.forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                modal.style.display = 'block';
-                document.body.style.overflow = 'hidden';
-            });
-        });
+    if (strategyModal) {
+        const openModal = (e) => {
+            if(e) e.preventDefault();
 
-        closeBtn.addEventListener('click', function() {
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        });
-
-        window.addEventListener('click', function(e) {
-            if (e.target == modal) {
-                modal.style.display = 'none';
-                document.body.style.overflow = 'auto';
+            // If opened from mobile menu, hide the mobile menu first
+            if(menuToggle && menuToggle.classList.contains('is-active')) {
+                menuToggle.classList.remove('is-active');
+                menuContainer.classList.remove('is-open');
+                document.body.classList.remove('menu-open');
             }
+
+            strategyModal.style.display = 'block';
+            modalBackdrop.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        };
+
+        const closeModal = () => {
+            strategyModal.style.display = 'none';
+            modalBackdrop.style.display = 'none';
+            document.body.style.overflow = '';
+        };
+
+        openModalBtns.forEach(btn => {
+            btn.addEventListener('click', openModal);
         });
+
+        if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
+        if (modalBackdrop) modalBackdrop.addEventListener('click', closeModal);
     }
 
     // Header scroll effect
@@ -66,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, { threshold: 0.05 });
 
-    document.querySelectorAll('.section').forEach(section => {
+    document.querySelectorAll('.section, .who-section, .services-section, .partner-section, .foxx-section, .proof-section').forEach(section => {
         section.style.opacity = 0;
         section.style.transform = 'translateY(40px)';
         section.style.transition = 'all 1s cubic-bezier(0.165, 0.84, 0.44, 1)';

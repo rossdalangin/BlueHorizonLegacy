@@ -29,15 +29,12 @@ function ai_style_theme_setup() {
 add_action( 'after_setup_theme', 'ai_style_theme_setup' );
 
 function ai_style_theme_scripts() {
-    $font_heading = get_theme_mod('font_heading', 'Montserrat');
-    $font_body = get_theme_mod('font_body', 'Inter');
+    $font_heading = get_theme_mod('font_heading', 'Anton');
+    $font_body = get_theme_mod('font_body', 'DM Sans');
 
-    // Prepare fonts for Google Fonts URL
-    $fonts = array();
-    $fonts[] = $font_heading . ':wght@700;800';
-    $fonts[] = $font_body . ':wght@300;400;600;700';
-
-    $fonts_url = 'https://fonts.googleapis.com/css2?family=' . implode('&family=', array_map(function($f) { return str_replace(' ', '+', $f); }, $fonts)) . '&display=swap';
+    // Prepare fonts for Google Fonts URL - Dynamic support for chosen fonts
+    $fonts = array('Anton', 'DM Sans', 'Oswald', 'Montserrat', 'Inter');
+    $fonts_url = 'https://fonts.googleapis.com/css2?family=' . implode('&family=', array_map(function($f) { return str_replace(' ', '+', $f) . ':wght@300;400;500;600;700;800;900'; }, $fonts)) . '&display=swap';
 
     wp_enqueue_style( 'ai-style-theme-fonts', $fonts_url, array(), null );
     wp_enqueue_style( 'ai-style-theme-style', get_stylesheet_uri(), array(), '2.5.0' );
@@ -86,31 +83,28 @@ function ai_style_theme_customize_register( $wp_customize ) {
     }
 
     // Fonts
-    $wp_customize->add_setting( 'font_heading', array( 'default' => 'Montserrat', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_setting( 'font_heading', array( 'default' => 'Anton', 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'font_heading', array(
         'label' => 'Heading Font',
         'section' => 'theme_styling',
         'type' => 'select',
         'choices' => array(
+            'Anton' => 'Anton',
+            'Oswald' => 'Oswald',
             'Montserrat' => 'Montserrat',
             'Inter' => 'Inter',
-            'Oswald' => 'Oswald',
-            'Roboto' => 'Roboto',
-            'Space Grotesk' => 'Space Grotesk',
         )
     ));
 
-    $wp_customize->add_setting( 'font_body', array( 'default' => 'Inter', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_setting( 'font_body', array( 'default' => 'DM Sans', 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'font_body', array(
         'label' => 'Body Font',
         'section' => 'theme_styling',
         'type' => 'select',
         'choices' => array(
+            'DM Sans' => 'DM Sans',
             'Inter' => 'Inter',
-            'Montserrat' => 'Montserrat',
-            'Roboto' => 'Roboto',
             'Open Sans' => 'Open Sans',
-            'Nunito' => 'Nunito',
         )
     ));
 
