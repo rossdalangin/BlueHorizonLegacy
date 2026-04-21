@@ -12,23 +12,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 function ai_style_theme_setup() {
-    // Add default posts and comments RSS feed links to head.
     add_theme_support( 'automatic-feed-links' );
-
-    // Let WordPress manage the document title.
     add_theme_support( 'title-tag' );
-
-    // Enable support for Post Thumbnails on posts and pages.
     add_theme_support( 'post-thumbnails' );
 
-    // Register navigation menus.
     register_nav_menus(
         array(
             'menu-1' => esc_html__( 'Primary Menu', 'ai-style-theme' ),
         )
     );
 
-    // Switch default core markup for search form, comment form, and comments to output valid HTML5.
     add_theme_support(
         'html5',
         array(
@@ -45,19 +38,12 @@ function ai_style_theme_setup() {
 add_action( 'after_setup_theme', 'ai_style_theme_setup' );
 
 function ai_style_theme_scripts() {
-    // Enqueue Google Fonts
     wp_enqueue_style( 'ai-style-theme-fonts', 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Montserrat:wght@700&display=swap', array(), null );
-
-    // Enqueue Main Stylesheet
     wp_enqueue_style( 'ai-style-theme-style', get_stylesheet_uri(), array(), '1.0.0' );
+    wp_enqueue_script( 'ai-style-theme-scripts', get_template_directory_uri() . '/assets/js/theme-scripts.js', array(), '1.0.0', true );
 }
 add_action( 'wp_enqueue_scripts', 'ai_style_theme_scripts' );
 
-/**
- * Register widget area.
- *
- * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
- */
 function ai_style_theme_widgets_init() {
 	register_sidebar(
 		array(
@@ -72,3 +58,80 @@ function ai_style_theme_widgets_init() {
 	);
 }
 add_action( 'widgets_init', 'ai_style_theme_widgets_init' );
+
+/**
+ * Customizer additions.
+ */
+function ai_style_theme_customize_register( $wp_customize ) {
+    $wp_customize->add_panel( 'homepage_settings', array(
+        'title' => __( 'Homepage Settings', 'ai-style-theme' ),
+        'priority' => 30,
+    ) );
+
+    // Hero Section
+    $wp_customize->add_section( 'hero_section', array(
+        'title' => __( 'Hero Section', 'ai-style-theme' ),
+        'panel' => 'homepage_settings',
+    ) );
+
+    $wp_customize->add_setting( 'hero_title', array(
+        'default' => 'We Are Your AI Department.',
+        'sanitize_callback' => 'sanitize_text_field',
+    ) );
+    $wp_customize->add_control( 'hero_title', array(
+        'label' => __( 'Hero Title', 'ai-style-theme' ),
+        'section' => 'hero_section',
+        'type' => 'text',
+    ) );
+
+    $wp_customize->add_setting( 'hero_subtitle', array(
+        'default' => 'We design, build, and deploy AI Departments that scale your business without scaling your headcount. Done for you. Running in weeks.',
+        'sanitize_callback' => 'textarea_sanitize',
+    ) );
+    $wp_customize->add_control( 'hero_subtitle', array(
+        'label' => __( 'Hero Subtitle', 'ai-style-theme' ),
+        'section' => 'hero_section',
+        'type' => 'textarea',
+    ) );
+
+    $wp_customize->add_setting( 'hero_cta_text', array(
+        'default' => 'Book a Strategy Call',
+        'sanitize_callback' => 'sanitize_text_field',
+    ) );
+    $wp_customize->add_control( 'hero_cta_text', array(
+        'label' => __( 'CTA Button Text', 'ai-style-theme' ),
+        'section' => 'hero_section',
+        'type' => 'text',
+    ) );
+
+    // About Section
+    $wp_customize->add_section( 'about_section', array(
+        'title' => __( 'Who We Are', 'ai-style-theme' ),
+        'panel' => 'homepage_settings',
+    ) );
+
+    $wp_customize->add_setting( 'about_title', array(
+        'default' => 'Who Is The AI Agency Group',
+        'sanitize_callback' => 'sanitize_text_field',
+    ) );
+    $wp_customize->add_control( 'about_title', array(
+        'label' => __( 'About Title', 'ai-style-theme' ),
+        'section' => 'about_section',
+        'type' => 'text',
+    ) );
+
+    $wp_customize->add_setting( 'about_content', array(
+        'default' => 'The AI Agency Group is a global AI infrastructure and implementation firm that builds AI departments and AI employees that replace work, reduce costs, and increase output across your business.',
+        'sanitize_callback' => 'textarea_sanitize',
+    ) );
+    $wp_customize->add_control( 'about_content', array(
+        'label' => __( 'About Content', 'ai-style-theme' ),
+        'section' => 'about_section',
+        'type' => 'textarea',
+    ) );
+}
+add_action( 'customize_register', 'ai_style_theme_customize_register' );
+
+function textarea_sanitize( $input ) {
+    return wp_kses_post( $input );
+}

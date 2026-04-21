@@ -11,51 +11,87 @@ get_header();
 <!-- Hero Section -->
 <section id="hero" class="section section-alt geometric-bg flat-border">
     <div class="container text-center">
-        <h1 class="text-uppercase tracking-widest" style="font-size: 3.5rem; margin-bottom: 2rem;">Elite AI Intelligence Platform</h1>
-        <p style="font-size: 1.25rem; max-width: 800px; margin: 0 auto 3rem; color: var(--text-off-white);">SYSTEMATIC PRECISION. HIGH-AUTHORITY INSIGHTS. ELITE BUSINESS INTELLIGENCE TOOLS DESIGNED FOR THE MODERN ENTERPRISE.</p>
+        <h1 class="text-uppercase tracking-widest" style="font-size: 3.5rem; margin-bottom: 2rem;">
+            <?php echo esc_html( get_theme_mod( 'hero_title', 'We Are Your AI Department.' ) ); ?>
+        </h1>
+        <p style="font-size: 1.25rem; max-width: 800px; margin: 0 auto 3rem; color: var(--text-off-white);">
+            <?php echo wp_kses_post( get_theme_mod( 'hero_subtitle', 'We design, build, and deploy AI Departments that scale your business without scaling your headcount. Done for you. Running in weeks.' ) ); ?>
+        </p>
         <div style="display: flex; gap: 1.5rem; justify-content: center;">
-            <a href="#" class="btn btn-teal">Access Intelligence</a>
-            <a href="#" class="btn btn-outline-gold">View Documentation</a>
+            <a href="#" class="btn btn-teal open-modal">
+                <?php echo esc_html( get_theme_mod( 'hero_cta_text', 'Book a Strategy Call' ) ); ?>
+            </a>
+            <a href="#features" class="btn btn-outline-gold">See Our Services</a>
         </div>
     </div>
 </section>
 
-<!-- Dashboard Section -->
-<section id="features" class="section">
+<!-- About Section -->
+<section id="about" class="section">
     <div class="container">
-        <h2 class="section-title">Systematic Capabilities</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 4rem; align-items: start;">
+            <div>
+                <h2 class="section-title">
+                    <?php echo esc_html( get_theme_mod( 'about_title', 'Who Is The AI Agency Group' ) ); ?>
+                </h2>
+            </div>
+            <div>
+                <p style="font-size: 1.1rem; line-height: 1.8;">
+                    <?php echo wp_kses_post( get_theme_mod( 'about_content', 'The AI Agency Group is a global AI infrastructure and implementation firm that builds AI departments and AI employees that replace work, reduce costs, and increase output across your business.' ) ); ?>
+                </p>
+                <p style="margin-top: 2rem;">
+                    With 102 partners spread out all around the world, we serve companies of all sizes all over the globe, from solopreneurs to enterprise organizations and government.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Grid -->
+<section id="features" class="section section-alt flat-border">
+    <div class="container">
+        <h2 class="section-title">How We Can Help You</h2>
         <div class="dashboard-grid">
             <div class="dashboard-card">
-                <div class="card-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.18L19.5 8 12 11.82 4.5 8 12 4.18zM4 16.18V9.18l7 3.5v7l-7-3.5zm9 3.5v-7l7-3.5v7l-7 3.5z"/></svg>
-                </div>
-                <h3>Predictive Analytics</h3>
-                <p>High-precision modeling using elite datasets to forecast market shifts before they manifest.</p>
+                <div class="card-icon">01</div>
+                <h3>AI Departments</h3>
+                <p>We build your entire AI operation. Strategy, systems, employees, and workflows. Designed for your business.</p>
             </div>
             <div class="dashboard-card">
-                <div class="card-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24"><path d="M21 16.5C21 16.88 20.79 17.21 20.47 17.38L12.57 21.82C12.41 21.94 12.21 22 12 22C11.79 22 11.59 21.94 11.43 21.82L3.53 17.38C3.21 17.21 3 16.88 3 16.5V7.5C3 7.12 3.21 6.79 3.53 6.62L11.43 2.18C11.59 2.06 11.79 2 12 2C12.21 2 12.41 2.06 12.57 2.18L20.47 6.62C20.79 6.79 21 7.12 21 7.5V16.5Z"/></svg>
-                </div>
-                <h3>Neural Integration</h3>
-                <p>Seamlessly integrate systematic data streams into your existing corporate infrastructure.</p>
+                <div class="card-icon">02</div>
+                <h3>AI Employees</h3>
+                <p>AI employees that handle sales, support, and operations 24/7. Replace or amplify your team with AI that never stops.</p>
             </div>
             <div class="dashboard-card">
-                <div class="card-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-                </div>
-                <h3>Elite Security</h3>
-                <p>Top-tier encryption and decentralized data protocols ensuring maximum authority and privacy.</p>
+                <div class="card-icon">03</div>
+                <h3>Custom AI Projects</h3>
+                <p>You dream it. We build it. Have a specific problem or a bold vision? We engineer the AI solution from the ground up.</p>
+            </div>
+            <div class="dashboard-card">
+                <div class="card-icon">04</div>
+                <h3>AI Workflows</h3>
+                <p>We map, automate, and optimize your most time-consuming processes. The result is a leaner, faster operation.</p>
+            </div>
+            <div class="dashboard-card">
+                <div class="card-icon">05</div>
+                <h3>AI SEO — AIO</h3>
+                <p>Search has changed. AI is how people find businesses now. We optimize your presence so AI engines recommend you first.</p>
+            </div>
+            <div class="dashboard-card">
+                <div class="card-icon">06</div>
+                <h3>AI Training</h3>
+                <p>We train your people to design, deploy, and manage AI themselves. We make your team dangerous with the most powerful weapon.</p>
             </div>
         </div>
     </div>
 </section>
 
 <!-- Call to Action -->
-<section id="cta" class="section section-alt flat-border" style="border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1);">
+<section id="cta" class="section flat-border">
     <div class="container text-center">
-        <h2 style="margin-bottom: 1.5rem;">Ready for Elite Intelligence?</h2>
-        <p style="margin-bottom: 3rem; opacity: 0.8; max-width: 600px; margin-left: auto; margin-right: auto;">Step into the future of systematic business intelligence. Join the ranks of elite enterprises.</p>
-        <a href="#" class="btn btn-teal">Request Early Access</a>
+        <h2 style="margin-bottom: 1.5rem;">Ready to Work With Us?</h2>
+        <p style="margin-bottom: 3rem; opacity: 0.8; max-width: 600px; margin-left: auto; margin-right: auto;">The businesses winning right now are not smarter. They are better armed. Let us build your AI department.</p>
+        <a href="#" class="btn btn-teal open-modal">Book a Strategy Call</a>
     </div>
 </section>
 

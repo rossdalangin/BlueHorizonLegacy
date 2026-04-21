@@ -4,18 +4,18 @@ Theme URI: http://example.com/ai-style-theme
 Author: Jules
 Author URI: http://example.com
 Description: A high-end, professional WordPress landing page design for an elite AI intelligence platform. Flat and minimalist.
-Version: 1.0.0
+Version: 1.1.0
 Text Domain: ai-style-theme
 */
 
 :root {
     --primary-navy: #001f3f;
-    --primary-charcoal: #121212;
+    --primary-charcoal: #0a0a0a;
     --accent-teal: #00b4b4;
     --accent-gold: #c5a028;
     --text-white: #ffffff;
     --text-off-white: #d1d1d1;
-    --bg-darker: #0a0a0a;
+    --bg-darker: #050505;
     --font-heading: 'Montserrat', sans-serif;
     --font-body: 'Inter', sans-serif;
     --spacing-xl: 120px;
@@ -66,9 +66,9 @@ a:hover {
 
 .geometric-bg {
     background-image:
-        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-    background-size: 50px 50px;
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
 }
 
 /* Sections */
@@ -97,7 +97,7 @@ a:hover {
 
 .btn-teal {
     background-color: var(--accent-teal);
-    color: var(--primary-charcoal);
+    color: #000;
 }
 
 .btn-teal:hover {
@@ -113,7 +113,7 @@ a:hover {
 
 .btn-outline-gold:hover {
     background-color: var(--accent-gold);
-    color: var(--primary-charcoal);
+    color: #000;
 }
 
 /* Typography Overrides */
@@ -146,14 +146,15 @@ a:hover {
 }
 
 .dashboard-card {
-    background-color: rgba(255, 255, 255, 0.02);
+    background-color: rgba(255, 255, 255, 0.01);
     padding: 2.5rem;
     border: 1px solid rgba(255, 255, 255, 0.05);
-    transition: border-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .dashboard-card:hover {
     border-color: var(--accent-teal);
+    background-color: rgba(255, 255, 255, 0.02);
 }
 
 .card-icon {
@@ -164,10 +165,8 @@ a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.card-icon svg {
-    fill: var(--accent-teal);
+    color: var(--accent-teal);
+    font-weight: 700;
 }
 
 /* Responsive */
@@ -177,5 +176,8 @@ a:hover {
     }
     .section-title {
         font-size: 2rem;
+    }
+    .container {
+        padding: 0 20px;
     }
 }
