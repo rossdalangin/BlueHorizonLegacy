@@ -180,10 +180,17 @@ get_header();
     <div class="container">
         <h2 class="section-label text-center" style="display: block; margin: 0 auto 5rem;"><?php echo esc_html( get_theme_mod('test_title', 'Real Businesses. Real Results.') ); ?></h2>
         <div class="dashboard-grid">
-            <?php for($k=1; $k<=4; $k++): ?>
+            <?php
+            $test_defaults = array(
+                1 => array('n' => 'Jeff', 'q' => 'The brain is at your fingertips all the time. The strategic business AI has become a crucial business asset that consistently saves me time.'),
+                2 => array('n' => 'Gates', 'q' => 'Pays for itself in the first 30 days! The accuracy is like nothing I’ve ever seen. From contracts, to executed plans to succeed. It’s a must have.'),
+                3 => array('n' => 'Claire', 'q' => 'Confidence with data-driven customer disputes. Using its strategic insights, we clarified that our pricing reflects a robust business model.'),
+                4 => array('n' => 'Steve', 'q' => 'Simplicity, Efficiency and Cost-effectiveness! It’s precise NDA reviews have minimised my legal requirements and costs.')
+            );
+            for($k=1; $k<=4; $k++): ?>
             <div class="dashboard-card">
-                <p style="font-style: italic; opacity: 0.8; margin-bottom: 2rem;">"<?php echo wp_kses_post(get_theme_mod("test_q_$k")); ?>"</p>
-                <h4 style="color: var(--accent-gold);"><?php echo esc_html(get_theme_mod("test_n_$k")); ?></h4>
+                <p style="font-style: italic; opacity: 0.8; margin-bottom: 2rem;">"<?php echo wp_kses_post(get_theme_mod("test_q_$k", $test_defaults[$k]['q'])); ?>"</p>
+                <h4 style="color: var(--accent-gold);"><?php echo esc_html(get_theme_mod("test_n_$k", $test_defaults[$k]['n'])); ?></h4>
             </div>
             <?php endfor; ?>
         </div>

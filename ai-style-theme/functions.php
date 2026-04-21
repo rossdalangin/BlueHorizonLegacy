@@ -119,15 +119,16 @@ function ai_style_theme_customize_register( $wp_customize ) {
     $wp_customize->add_panel( 'modal_panel', array( 'title' => 'Book a Call Modal', 'priority' => 40 ) );
 
     $add_hsc = function($id, $label, $section, $default = '', $type = 'text') use ($wp_customize) {
-        $wp_customize->add_setting( $id, array( 'default' => $default, 'sanitize_callback' => ($type == 'textarea' ? 'wp_kses_post' : ($type == 'url' ? 'esc_url_raw' : 'sanitize_text_field')) ) );
+        $sanitize = ($type == 'textarea' || $type == 'wp_kses_post') ? 'wp_kses_post' : ($type == 'url' ? 'esc_url_raw' : 'sanitize_text_field');
+        $wp_customize->add_setting( $id, array( 'default' => $default, 'sanitize_callback' => $sanitize ) );
         if ($type == 'image') { $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, $id, array( 'label' => $label, 'section' => $section ) ) ); }
-        else { $wp_customize->add_control( $id, array( 'label' => $label, 'section' => $section, 'type' => $type ) ); }
+        else { $wp_customize->add_control( $id, array( 'label' => $label, 'section' => $section, 'type' => ($type == 'wp_kses_post' ? 'textarea' : $type) ) ); }
     };
 
     // Homepage Sections
     $wp_customize->add_section( 'hp_hero', array('title' => '01. Hero', 'panel' => 'hp_panel') );
     $add_hsc('hero_top', 'Top Bar', 'hp_hero', 'Operating in 72 Countries  |  102 Global Partners');
-    $add_hsc('hero_title', 'Title', 'hp_hero', 'We Are Your<br>AI Department.');
+    $add_hsc('hero_title', 'Title', 'hp_hero', 'We Are Your<br>AI Department.', 'wp_kses_post');
     $add_hsc('hero_sub', 'Subtitle', 'hp_hero', 'We design, build, and deploy AI Departments that scale your business without scaling your headcount.', 'textarea');
     $add_hsc('hero_btn', 'Btn Text', 'hp_hero', 'Book a Strategy Call');
 
@@ -136,7 +137,7 @@ function ai_style_theme_customize_register( $wp_customize ) {
 
     $wp_customize->add_section( 'hp_who', array('title' => '03. Who We Are', 'panel' => 'hp_panel') );
     $add_hsc('who_title', 'Title', 'hp_who', 'Who Is The AI Agency Group');
-    $add_hsc('who_text', 'Text', 'hp_who', 'The AI Agency Group is a global AI infrastructure and implementation firm builds AI departments and AI employees that replace work, reduce costs, and increase output across your business.', 'textarea');
+    $add_hsc('who_text', 'Text', 'hp_who', 'The AI Agency Group is a global AI infrastructure and implementation firm that builds AI departments and AI employees that replace work, reduce costs, and increase output across your business. With 102 partners spread out all around the world, we serve companies of all sizes all over the globe, from solopreneurs to enterprise organizations and government.', 'textarea');
 
     $wp_customize->add_section( 'hp_div', array('title' => '04. Training Division', 'panel' => 'hp_panel') );
     $add_hsc('div_title', 'Title', 'hp_div', 'Implementation + Training Division');
@@ -201,7 +202,7 @@ function ai_style_theme_customize_register( $wp_customize ) {
     $add_hsc('bio_img', 'Bio Image', 'hp_bio', '', 'image');
     $add_hsc('bio_name', 'Name', 'hp_bio', 'JT FOXX');
     $add_hsc('bio_quote', 'Quote', 'hp_bio', '"Business is War. AI is the New Weapon."');
-    $add_hsc('bio_text', 'Bio Text', 'hp_bio', 'JT Foxx is a global entrepreneur...', 'textarea');
+    $add_hsc('bio_text', 'Bio Text', 'hp_bio', 'JT Foxx is a global entrepreneur, investor, and one of the most sought-after voices in business today. He has built companies across multiple industries, conducted 100+ interviews with Hollywood A-listers, celebrities, and billionaires, and spoken on stage in countries across every continent. He is the best-selling author of three books, including Business is War: AI is the New Weapon.', 'textarea');
 
     $wp_customize->add_section( 'hp_test', array('title' => '10. Testimonials', 'panel' => 'hp_panel') );
     $add_hsc('test_title', 'Title', 'hp_test', 'Real Businesses. Real Results.');
@@ -240,9 +241,31 @@ function ai_style_theme_customize_register( $wp_customize ) {
     $add_hsc('m_ben_list', 'Benefits List (One per line)', 'modal_sec', "Identify exactly where your business is losing time, money, and efficiency\nPinpoint where AI employees can replace or support your current team\nMap out every opportunity to increase profit and reduce operating costs\nBreak down how AI applies across your sales, marketing, operations, and client service\nWalk away with a clear execution plan tailored specifically to your business\nDiscover which roles and operations are most immediately replaceable or amplifiable", 'textarea');
 
     // FAQ
-    for($f=1;$f<=5;$f++) {
-        $add_hsc("m_faq_q_$f", "FAQ $f Question", 'modal_sec', "Common Question $f");
-        $add_hsc("m_faq_a_$f", "FAQ $f Answer", 'modal_sec', "Strategic answer for common question $f", 'textarea');
+    $faq_defaults = array(
+        1 => array('q' => 'What exactly happens on the strategy session?', 'a' => 'This is a focused working session. We look at your business, identify where time, money, and efficiency are being lost, and map out where AI can replace or support your team.'),
+        2 => array('q' => 'Is this just another sales call?', 'a' => 'No. This is a strategy session designed to give you clarity on how AI can be implemented inside your business. If there is a fit, we discuss next steps.'),
+        3 => array('q' => 'What types of businesses do you work with?', 'a' => 'We work with business owners, entrepreneurs, executives, and companies from small businesses to enterprise and government.'),
+        4 => array('q' => 'What do you mean by AI employees?', 'a' => 'AI employees are systems designed to perform specific roles inside your business. This includes sales follow-up, marketing content, customer service, and operational workflows.'),
+        5 => array('q' => 'Can AI really replace parts of my team?', 'a' => 'Yes. In many cases, AI can replace or significantly reduce the need for certain roles, especially where work is repetitive or structured.'),
+        6 => array('q' => 'Why are most companies failing with AI?', 'a' => 'Because they are using it as a tool, not as a system. The companies winning with AI are building it into their sales, operations, and execution.'),
+        7 => array('q' => 'How quickly can this be implemented?', 'a' => 'It depends on the complexity. Some systems can be implemented quickly. Full AI departments take longer to design and build.'),
+        8 => array('q' => 'Do I need technical knowledge or a team to do this?', 'a' => 'No. We handle the strategy, design, and implementation. If you want your team involved, we can train them.'),
+        9 => array('q' => 'What if I want to build this internally?', 'a' => 'We support that. We have a dedicated training division that teaches business owners and teams how to build and scale AI.'),
+        10 => array('q' => 'What kind of results can I expect?', 'a' => 'Most companies see a 20% to 60% reduction in operational costs and a 2x to 5x increase in output in key areas.'),
+        11 => array('q' => 'Is this expensive?', 'a' => 'The real question is: what is the cost of not fixing inefficiency? AI is a way to reduce cost and improve profitability.'),
+        12 => array('q' => 'What if this is not a fit for my business?', 'a' => 'Then you still leave with clarity. We will show you where AI can or cannot be applied. No obligation to move forward.'),
+        13 => array('q' => 'What happens after the call?', 'a' => 'You will have a clear direction. If there is a fit, we outline how we can build or implement AI inside your business.'),
+        14 => array('q' => 'Why should I do this now?', 'a' => 'Because the gap is already happening. Companies implementing AI at a system level are moving faster. Waiting means falling behind.')
+    );
+    for($f=1;$f<=14;$f++) {
+        $add_hsc("m_faq_q_$f", "FAQ $f Question", 'modal_sec', $faq_defaults[$f]['q']);
+        $add_hsc("m_faq_a_$f", "FAQ $f Answer", 'modal_sec', $faq_defaults[$f]['a'], 'textarea');
     }
+
+    // Modal Content Sections
+    $wp_customize->add_section( 'modal_content', array('title' => 'Extra Modal Sections', 'panel' => 'modal_panel') );
+    $add_hsc('m_for_title', 'Who This Is For Title', 'modal_content', 'Who This Is For');
+    $add_hsc('m_comp_title', 'Comparison Title', 'modal_content', 'Most Companies Use AI Wrong');
+    $add_hsc('m_delay_title', 'Delay Cost Title', 'modal_content', 'Every Month You Delay Has a Cost');
 }
 add_action( 'customize_register', 'ai_style_theme_customize_register' );

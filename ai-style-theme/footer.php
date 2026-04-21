@@ -16,12 +16,17 @@
                     <li>AI Employees</li>
                     <li>Custom AI Projects</li>
                     <li>AI Workflows</li>
+                    <li>AI SEO — AIO</li>
+                    <li>Tool Activation</li>
+                    <li>AI Training</li>
+                    <li>AI Yourself</li>
                 </ul>
             </div>
             <div>
                 <h4 style="font-size: 0.95rem; margin-bottom: 2rem; letter-spacing: 0.15em;">COMPANY</h4>
                 <ul style="list-style: none; padding: 0; opacity: 0.5; font-size: 0.9rem; line-height: 2.2;">
-                    <li>Who We Are</li>
+                    <li>Who We Build For</li>
+                    <li>Our Work</li>
                     <li>Insights</li>
                     <li>Careers</li>
                     <li>Contact</li>
@@ -33,6 +38,8 @@
                     <li>LinkedIn</li>
                     <li>Instagram</li>
                     <li>YouTube</li>
+                    <li>Facebook</li>
+                    <li>X / Twitter</li>
                 </ul>
             </div>
         </div>
@@ -93,17 +100,65 @@
                     </div>
 
                     <div class="modal-info-section">
-                        <h3 class="modal-section-title">Common Questions</h3>
-                        <div class="modal-faq">
-                            <?php for($f=1; $f<=5; $f++):
-                                $q = get_theme_mod("m_faq_q_$f");
-                                $a = get_theme_mod("m_faq_a_$f");
-                                if($q): ?>
-                                <div class="faq-item">
-                                    <div class="faq-question"><?php echo esc_html($q); ?></div>
-                                    <div class="faq-answer"><?php echo wp_kses_post($a); ?></div>
-                                </div>
-                            <?php endif; endfor; ?>
+                        <h3 class="modal-section-title"><?php echo esc_html(get_theme_mod('m_for_title', 'Who This Is For')); ?></h3>
+                            <div class="for-grid">
+                                <div class="for-item"><span>↑</span><strong>Increase Profitability</strong> Business owners who want more margin without more people</div>
+                                <div class="for-item"><span>↓</span><strong>Reduce Operating Costs</strong> Executives looking to cut overhead without cutting performance</div>
+                                <div class="for-item"><span>⚡</span><strong>Improve Efficiency</strong> Leaders who want faster execution across every department</div>
+                                <div class="for-item"><span>→</span><strong>Scale Without Bloat</strong> Operators ready to grow without adding unnecessary overhead</div>
+                            </div>
+                        </div>
+
+                        <div class="modal-info-section">
+                            <h3 class="modal-section-title"><?php echo esc_html(get_theme_mod('m_comp_title', 'Most Companies Use AI Wrong')); ?></h3>
+                            <div class="comp-table">
+                                <div class="comp-row head"><div>Typical Approach</div><div>This Session</div></div>
+                                <div class="comp-row"><div>Generic AI overview with no direct application</div><div>Specific to your business, team structure, and cost model</div></div>
+                                <div class="comp-row"><div>AI tools that save small amounts of time on low-leverage tasks</div><div>Focused entirely on where AI actually impacts profit and execution</div></div>
+                                <div class="comp-row"><div>Generic roadmap that could apply to any company</div><div>Clear, tailored execution plan built specifically around your business</div></div>
+                            </div>
+                        </div>
+
+                        <div class="modal-info-section">
+                            <h3 class="modal-section-title"><?php echo esc_html(get_theme_mod('m_delay_title', 'Every Month You Delay Has a Cost')); ?></h3>
+                            <p class="modal-section-desc">The gap is already happening. Companies implementing AI at a system level are moving faster. Waiting means falling behind.</p>
+                            <ol class="delay-list">
+                                <li>You continue paying for work AI could handle at a fraction of the cost</li>
+                                <li>Your competitors move faster and operate more efficiently every quarter</li>
+                                <li>The margin between leaders and followers widens and accelerates</li>
+                            </ol>
+                        </div>
+
+                        <div class="modal-info-section">
+                            <h3 class="modal-section-title">Common Questions</h3>
+                            <div class="modal-faq">
+                            <?php
+                            $faq_defaults = array(
+                                1 => array('q' => 'What exactly happens on the strategy session?', 'a' => 'This is a focused working session. We look at your business, identify where time, money, and efficiency are being lost, and map out where AI can replace or support your team.'),
+                                2 => array('q' => 'Is this just another sales call?', 'a' => 'No. This is a strategy session designed to give you clarity on how AI can be implemented inside your business. If there is a fit, we discuss next steps.'),
+                                3 => array('q' => 'What types of businesses do you work with?', 'a' => 'We work with business owners, entrepreneurs, executives, and companies from small businesses to enterprise and government.'),
+                                4 => array('q' => 'What do you mean by AI employees?', 'a' => 'AI employees are systems designed to perform specific roles inside your business. This includes sales follow-up, marketing content, customer service, and operational workflows.'),
+                                5 => array('q' => 'Can AI really replace parts of my team?', 'a' => 'Yes. In many cases, AI can replace or significantly reduce the need for certain roles, especially where work is repetitive or structured.'),
+                                6 => array('q' => 'Why are most companies failing with AI?', 'a' => 'Because they are using it as a tool, not as a system. The companies winning with AI are building it into their sales, operations, and execution.'),
+                                7 => array('q' => 'How quickly can this be implemented?', 'a' => 'It depends on the complexity. Some systems can be implemented quickly. Full AI departments take longer to design and build.'),
+                                8 => array('q' => 'Do I need technical knowledge or a team to do this?', 'a' => 'No. We handle the strategy, design, and implementation. If you want your team involved, we can train them.'),
+                                9 => array('q' => 'What if I want to build this internally?', 'a' => 'We support that. We have a dedicated training division that teaches business owners and teams how to build and scale AI.'),
+                                10 => array('q' => 'What kind of results can I expect?', 'a' => 'Most companies see a 20% to 60% reduction in operational costs and a 2x to 5x increase in output in key areas.'),
+                                11 => array('q' => 'Is this expensive?', 'a' => 'The real question is: what is the cost of not fixing inefficiency? AI is a way to reduce cost and improve profitability.'),
+                                12 => array('q' => 'What if this is not a fit for my business?', 'a' => 'Then you still leave with clarity. We will show you where AI can or cannot be applied. No obligation to move forward.'),
+                                13 => array('q' => 'What happens after the call?', 'a' => 'You will have a clear direction. If there is a fit, we outline how we can build or implement AI inside your business.'),
+                                14 => array('q' => 'Why should I do this now?', 'a' => 'Because the gap is already happening. Companies implementing AI at a system level are moving faster. Waiting means falling behind.')
+                            );
+                            for($f=1; $f<=14; $f++):
+                                $q = get_theme_mod("m_faq_q_$f", $faq_defaults[$f]['q']);
+                                $a = get_theme_mod("m_faq_a_$f", $faq_defaults[$f]['a']);
+                                    if($q): ?>
+                                    <div class="faq-item">
+                                        <div class="faq-question"><?php echo esc_html($q); ?></div>
+                                        <div class="faq-answer"><?php echo wp_kses_post($a); ?></div>
+                                    </div>
+                                <?php endif; endfor; ?>
+                            </div>
                         </div>
                     </div>
                 </div>
