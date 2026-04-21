@@ -49,37 +49,68 @@
 <div id="call-modal" class="modal">
     <div class="modal-content">
         <span class="close-modal">&times;</span>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6rem;">
-            <div class="modal-left">
-                <h2 style="font-size: 2.5rem; margin-bottom: 1rem;"><?php echo esc_html( get_theme_mod( 'm_title', 'Secure Your AI Strategy Session' ) ); ?></h2>
-                <p style="opacity: 0.7; margin-bottom: 3rem; font-size: 1.2rem;"><?php echo wp_kses_post( get_theme_mod( 'm_sub', '15–30 Minutes &middot; No Obligation &middot; Leave with a Clear Plan' ) ); ?></p>
 
-                <h4 style="margin-bottom: 2rem; color: var(--accent-teal);"><?php echo esc_html(get_theme_mod('m_ben_title', 'What You’ll Get on This Call')); ?></h4>
-                <ul style="list-style: none; padding: 0; font-size: 1.1rem; line-height: 2;">
-                    <?php
-                    $bens = explode("\n", get_theme_mod('m_ben_list', "Identify losing time/money\nPinpoint replaceable roles\nMap profit opportunities"));
-                    foreach ($bens as $b) if(trim($b)) echo '<li style="margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.5rem;">✦ '.esc_html(trim($b)).'</li>';
-                    ?>
-                </ul>
-            </div>
-            <div class="modal-right">
-                <div class="modal-form-container" style="background: rgba(255,255,255,0.02); padding: 3rem; border: 1px solid rgba(255,255,255,0.05);">
-                    <?php
-                    $cf7 = get_theme_mod( 'm_cf7' );
-                    echo $cf7 ? do_shortcode($cf7) : '<p>Please configure the CF7 shortcode.</p>';
-                    ?>
+        <div class="modal-header-clean">
+            <h2 class="modal-main-title"><?php echo esc_html(get_theme_mod('m_title', 'Secure Your AI Strategy Session')); ?></h2>
+            <p class="modal-subtitle"><?php echo esc_html(get_theme_mod('m_sub', '15–30 Minutes &middot; No Obligation &middot; Leave with a Clear Plan')); ?></p>
+        </div>
+
+        <div class="modal-body-scroll">
+            <div class="modal-split">
+                <!-- Left: Form -->
+                <div class="modal-form-area">
+                    <?php if ( get_theme_mod( 'm_type', 'iframe' ) === 'cf7' ) : ?>
+                        <div class="modal-form-container" style="background: rgba(255,255,255,0.02); padding: 3rem; border: 1px solid rgba(255,255,255,0.05);">
+                            <?php echo do_shortcode( get_theme_mod( 'm_cf7', '[contact-form-7 id="123" title="Book a Call"]' ) ); ?>
+                        </div>
+                    <?php else : ?>
+                        <div class="iframe-container">
+                            <iframe src="<?php echo esc_url(get_theme_mod('m_iframe', 'https://forms.aiagencygroup.ai/ai-strategy-session')); ?>" frameborder="0" style="width:100%; min-height:800px; border:none;"></iframe>
+                        </div>
+                    <?php endif; ?>
+                    <div class="modal-notice">
+                        Limited Availability | If you see a time available, a slot just opened
+                    </div>
+                </div>
+
+                <!-- Right: Info -->
+                <div class="modal-info-area">
+                    <div class="modal-info-section">
+                        <h3 class="modal-section-title">Increase Profit. Reduce Costs. Replace or Amplify Your Team with AI.</h3>
+                        <p class="modal-section-desc">In this strategy session, we identify where AI can replace or support your team, reduce overhead, and increase output across your business.</p>
+                    </div>
+
+                    <div class="modal-info-section">
+                        <h3 class="modal-section-title"><?php echo esc_html(get_theme_mod('m_ben_title', 'What You’ll Get on This Call')); ?></h3>
+                        <ul class="modal-benefit-list">
+                            <?php
+                            $benefits = explode("\n", get_theme_mod('m_ben_list', "Identify exactly where your business is losing time, money, and efficiency\nPinpoint where AI employees can replace or support your current team\nMap out every opportunity to increase profit and reduce operating costs\nBreak down how AI applies across your sales, marketing, operations, and client service\nWalk away with a clear execution plan tailored specifically to your business\nDiscover which roles and operations are most immediately replaceable or amplifiable"));
+                            foreach ($benefits as $b) {
+                                if (trim($b)) echo '<li>' . esc_html(trim($b)) . '</li>';
+                            }
+                            ?>
+                        </ul>
+                    </div>
+
+                    <div class="modal-info-section">
+                        <h3 class="modal-section-title">Common Questions</h3>
+                        <div class="modal-faq">
+                            <?php for($f=1; $f<=5; $f++):
+                                $q = get_theme_mod("m_faq_q_$f");
+                                $a = get_theme_mod("m_faq_a_$f");
+                                if($q): ?>
+                                <div class="faq-item">
+                                    <div class="faq-question"><?php echo esc_html($q); ?></div>
+                                    <div class="faq-answer"><?php echo wp_kses_post($a); ?></div>
+                                </div>
+                            <?php endif; endfor; ?>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-<style>
-    .modal { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.98); backdrop-filter: blur(25px); overflow-y: auto; }
-    .modal-content { background: #000; margin: 2% auto; padding: 8rem 6rem; width: 95%; max-width: 1200px; position: relative; border: 1px solid rgba(255,255,255,0.1); }
-    .close-modal { position: absolute; right: 3rem; top: 2rem; font-size: 3.5rem; color: #fff; cursor: pointer; transition: 0.3s; }
-    .close-modal:hover { color: var(--accent-teal); }
-</style>
 
 <?php wp_footer(); ?>
 </body>

@@ -67,9 +67,12 @@ get_header();
                     <?php echo wp_kses_post( get_theme_mod('div_text', 'We do not just build AI systems for you. We also give you the capability to build and control them internally.') ); ?>
                 </div>
                 <ul style="margin-top: 2rem; list-style: none; padding: 0; font-size: 1.1rem; opacity: 0.7;">
-                    <li style="margin-bottom: 1rem;">✦ Designing AI employees for specific roles</li>
-                    <li style="margin-bottom: 1rem;">✦ Implementing AI workflows across departments</li>
-                    <li style="margin-bottom: 1rem;">✦ Integrating tools, systems, and custom builds</li>
+                    <?php
+                    $div_list = explode("\n", get_theme_mod('div_list', "Designing AI employees for specific roles\nImplementing AI workflows across departments\nIntegrating tools, systems, and custom builds\nScaling AI inside your company without breaking operations\nTurning AI into a long-term asset, not a one-time project"));
+                    foreach ($div_list as $item) {
+                        if (trim($item)) echo '<li style="margin-bottom: 1rem;">✦ ' . esc_html(trim($item)) . '</li>';
+                    }
+                    ?>
                 </ul>
             </div>
         </div>
@@ -121,6 +124,35 @@ get_header();
     </div>
 </section>
 
+<!-- Partner Section -->
+<section id="partners" class="section">
+    <div class="container">
+        <h2 class="section-label"><?php echo esc_html(get_theme_mod('partner_title', 'Build Your Own AI Agency.')); ?></h2>
+        <p style="font-size: 1.2rem; opacity: 0.8; max-width: 800px; margin-bottom: 4rem;">
+            <?php echo wp_kses_post(get_theme_mod('partner_sub', 'The AI Agency Group is not just a service. It is a platform.')); ?>
+        </p>
+        <div class="dashboard-grid">
+            <?php
+            $partner_defaults = array(
+                1 => array('t' => 'White Label Partner', 'd' => 'License our AI systems, training, and infrastructure under your own brand. You sell it. We build it.'),
+                2 => array('t' => 'Direct Seller Partner', 'd' => 'Sell our AI services directly and earn recurring commissions. No build required.'),
+                3 => array('t' => 'AI Agency Builder', 'd' => 'We train you to build, sell, and operate your own AI agency from the ground up.'),
+                4 => array('t' => 'Partnership', 'd' => 'Open your own AI Agency office and partner with us. We co-own and operate with you.')
+            );
+            for($p=1; $p<=4; $p++): ?>
+            <div class="dashboard-card">
+                <div class="card-num"><?php echo str_pad($p, 2, '0', STR_PAD_LEFT); ?></div>
+                <h3><?php echo esc_html(get_theme_mod("partner_t_$p", $partner_defaults[$p]['t'])); ?></h3>
+                <p><?php echo esc_html(get_theme_mod("partner_d_$p", $partner_defaults[$p]['d'])); ?></p>
+            </div>
+            <?php endfor; ?>
+        </div>
+        <div class="text-center" style="margin-top: 5rem;">
+            <a href="#" class="btn btn-outline open-modal">Apply to Become a Partner</a>
+        </div>
+    </div>
+</section>
+
 <!-- Scale Section -->
 <section class="section section-alt flat-border">
     <div class="container text-center">
@@ -128,10 +160,10 @@ get_header();
         <div class="dashboard-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
             <?php
             $scale_defaults = array(
-                1 => array('t' => 'Solopreneur', 'd' => 'Scale your personal output without adding expensive human staff.'),
-                2 => array('t' => 'Small Business', 'd' => 'Compete with industry giants using high-efficiency AI infrastructure.'),
-                3 => array('t' => 'Mid-Market', 'd' => 'Optimize departmental performance and reduce operational overhead.'),
-                4 => array('t' => 'Enterprise', 'd' => 'Global-scale AI deployment with strict security and custom integration.')
+                1 => array('t' => 'Solopreneur', 'd' => 'Maximum Leverage. You do not need a team. You need AI working for you around the clock.'),
+                2 => array('t' => 'Entrepreneur', 'd' => 'Scale Without Overhead. You are growing. Hiring is expensive and slow.'),
+                3 => array('t' => 'Enterprise', 'd' => 'Transform the Operation. You have the infrastructure. We bring the intelligence.'),
+                4 => array('t' => 'Government', 'd' => 'Public Sector AI. We build AI infrastructure for public sector organizations.')
             );
             for($j=1; $j<=4; $j++): ?>
             <div class="dashboard-card" style="text-align: left;">

@@ -90,6 +90,42 @@ h1, h2, h3, h4 {
 .dashboard-card:hover { border-color: var(--accent-teal); transform: translateY(-10px); }
 .card-num { font-family: var(--font-heading); font-size: 2.5rem; color: var(--accent-teal); margin-bottom: 1rem; font-weight: 800; }
 
+/* Modal Styles */
+.modal { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); backdrop-filter: blur(15px); overflow-y: auto; }
+.modal-content { background: #050505; margin: 40px auto; width: 95%; max-width: 1300px; border: 1px solid rgba(255,255,255,0.1); position: relative; }
+.close-modal { position: absolute; right: 25px; top: 15px; font-size: 40px; color: #fff; cursor: pointer; z-index: 10; opacity: 0.5; transition: 0.3s; }
+.close-modal:hover { opacity: 1; color: var(--accent-teal); }
+
+.modal-header-clean { padding: 60px 80px 40px; border-bottom: 1px solid rgba(255,255,255,0.05); text-align: center; }
+.modal-main-title { font-size: 3rem; margin-bottom: 10px; }
+.modal-subtitle { font-size: 1.1rem; opacity: 0.6; }
+
+.modal-split { display: grid; grid-template-columns: 1fr 1fr; }
+.modal-form-area { padding: 60px 80px; background: #000; border-right: 1px solid rgba(255,255,255,0.05); }
+.modal-info-area { padding: 60px 80px; background: #080808; }
+
+.modal-notice { margin-top: 30px; text-align: center; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-gold); opacity: 0.8; }
+
+.modal-info-section { margin-bottom: 60px; }
+.modal-section-title { font-size: 1.5rem; margin-bottom: 25px; color: #fff; line-height: 1.3; }
+.modal-section-desc { font-size: 1.1rem; opacity: 0.7; }
+
+.modal-benefit-list { list-style: none; padding: 0; }
+.modal-benefit-list li { padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 1.05rem; position: relative; padding-left: 35px; }
+.modal-benefit-list li::before { content: '✦'; position: absolute; left: 0; color: var(--accent-teal); }
+
+.modal-faq { margin-top: 30px; }
+.faq-item { margin-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 25px; }
+.faq-question { font-weight: 700; font-size: 1.1rem; color: var(--accent-teal); margin-bottom: 10px; cursor: pointer; }
+.faq-answer { font-size: 0.95rem; opacity: 0.7; line-height: 1.6; }
+
+@media (max-width: 1024px) {
+    .modal-split { grid-template-columns: 1fr; }
+    .modal-form-area { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .modal-header-clean, .modal-form-area, .modal-info-area { padding: 40px; }
+    .modal-main-title { font-size: 2rem; }
+}
+
 /* Contact Form 7 Global Styles */
 .wpcf7-form-control-wrap { margin-bottom: 1.2rem; display: block; }
 .wpcf7 input:not([type="submit"]), .wpcf7 textarea {
