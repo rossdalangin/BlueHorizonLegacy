@@ -25,6 +25,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Header scroll effect
+    const header = document.querySelector('.site-header');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            header.style.backgroundColor = 'rgba(0,0,0,0.9)';
+            header.style.padding = '15px 0';
+            header.style.borderBottom = '1px solid rgba(255,255,255,0.05)';
+        } else {
+            header.style.backgroundColor = 'transparent';
+            header.style.padding = '30px 0';
+            header.style.borderBottom = 'none';
+        }
+    });
+
     // Scroll reveal for sections
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -33,12 +47,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 entry.target.style.transform = 'translateY(0)';
             }
         });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.05 });
 
     document.querySelectorAll('.section').forEach(section => {
         section.style.opacity = 0;
-        section.style.transform = 'translateY(30px)';
-        section.style.transition = 'all 0.8s ease-out';
+        section.style.transform = 'translateY(40px)';
+        section.style.transition = 'all 1s cubic-bezier(0.165, 0.84, 0.44, 1)';
         observer.observe(section);
     });
 });
