@@ -49,12 +49,18 @@
 <div id="call-modal" class="modal">
     <div class="modal-content">
         <span class="close-modal">&times;</span>
-        <h2 class="text-center" style="font-size: 2.2rem; margin-bottom: 1rem;"><?php echo esc_html( get_theme_mod( 'modal_title', 'Secure Your AI Strategy Session' ) ); ?></h2>
-        <p class="text-center" style="opacity: 0.7; margin-bottom: 3rem; font-size: 1.1rem;"><?php echo wp_kses_post( get_theme_mod( 'modal_subtitle', '15–30 Minutes &middot; No Obligation &middot; Leave with a Clear Plan' ) ); ?></p>
+        <h2 class="text-center" style="font-size: 2.2rem; margin-bottom: 1rem;">
+            <?php echo esc_html( get_theme_mod( 'modal_title', 'Secure Your AI Strategy Session' ) ); ?>
+        </h2>
+        <p class="text-center" style="opacity: 0.7; margin-bottom: 3rem; font-size: 1.1rem;">
+            <?php echo wp_kses_post( get_theme_mod( 'modal_sub', '15–30 Minutes &middot; No Obligation &middot; Leave with a Clear Plan' ) ); ?>
+        </p>
         <div class="iframe-container">
-            <iframe src="<?php echo esc_url( get_theme_mod( 'modal_iframe_url', 'https://forms.aiagencygroup.ai/ai-strategy-session' ) ); ?>" frameborder="0" style="width: 100%; height: 600px;"></iframe>
+            <iframe src="<?php echo esc_url( get_theme_mod( 'modal_url', 'https://forms.aiagencygroup.ai/ai-strategy-session' ) ); ?>" frameborder="0" style="width: 100%; height: 600px;"></iframe>
         </div>
-        <p class="text-center" style="margin-top: 2rem; font-size: 0.85rem; opacity: 0.5;"><?php echo esc_html( get_theme_mod( 'modal_info', 'Limited Availability | If you see a time available, a slot just opened' ) ); ?></p>
+        <p class="text-center" style="margin-top: 2rem; font-size: 0.85rem; opacity: 0.5;">
+            <?php echo esc_html( get_theme_mod( 'modal_info', 'Limited Availability | If you see a time available, a slot just opened' ) ); ?>
+        </p>
     </div>
 </div>
 
