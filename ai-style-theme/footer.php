@@ -67,28 +67,22 @@
         </div>
 
         <div class="modal-body-scroll">
-            <div class="modal-split">
-                <!-- Left: Form Area -->
-                <div class="modal-form-area">
-                    <?php if ( get_theme_mod( 'm_type', 'iframe' ) === 'cf7' ) : ?>
-                        <div class="wpcf7-wrapper">
-                            <?php echo do_shortcode( get_theme_mod( 'm_cf7', '[contact-form-7 id="123" title="Book a Call"]' ) ); ?>
-                        </div>
-                    <?php else : ?>
-                        <div class="iframe-container">
-                            <iframe src="<?php echo esc_url(get_theme_mod('m_iframe', 'https://forms.aiagencygroup.ai/ai-strategy-session')); ?>" frameborder="0" style="width:100%; min-height:800px; border:none;"></iframe>
-                        </div>
-                    <?php endif; ?>
+            <div class="modal-container-narrow">
+                <!-- Form Area -->
+                <div class="modal-form-area-centered">
+                    <div class="wpcf7-wrapper">
+                        <?php echo do_shortcode( get_theme_mod( 'm_cf7', '[contact-form-7 id="123" title="Book a Call"]' ) ); ?>
+                    </div>
                     <div class="modal-notice">
                         Limited Availability | If you see a time available, a slot just opened
                     </div>
                 </div>
 
-                <!-- Right: Info Area -->
-                <div class="modal-info-area">
+                <!-- Info Area -->
+                <div class="modal-info-area-stacked">
                     <div class="modal-info-section">
                         <h3 class="modal-section-title">Increase Profit. Reduce Costs. Replace or Amplify Your Team with AI.</h3>
-                        <p class="modal-section-desc">In this strategy session, we identify where AI can replace or support your team, reduce overhead, and increase output across your business.</p>
+                        <p class="modal-section-desc">In this strategy session, we identify where AI can replace or support your team, reduce overhead, and increase output across your business. This is not a generic consultation. This is a focused working session.</p>
                     </div>
 
                     <div class="modal-info-section">

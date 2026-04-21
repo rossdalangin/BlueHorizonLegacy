@@ -231,16 +231,6 @@ function ai_style_theme_customize_register( $wp_customize ) {
     $wp_customize->add_section( 'modal_sec', array('title' => 'Settings', 'panel' => 'modal_panel') );
     $add_hsc('m_title', 'Title', 'modal_sec', 'Secure Your AI Strategy Session');
     $add_hsc('m_sub', 'Subtitle', 'modal_sec', '15–30 Minutes &middot; No Obligation &middot; Leave with a Clear Plan', 'textarea');
-
-    $wp_customize->add_setting( 'm_type', array( 'default' => 'iframe', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'm_type', array(
-        'label' => 'Form Type',
-        'section' => 'modal_sec',
-        'type' => 'radio',
-        'choices' => array( 'iframe' => 'Iframe', 'cf7' => 'Contact Form 7' )
-    ));
-
-    $add_hsc('m_iframe', 'Iframe URL', 'modal_sec', 'https://forms.aiagencygroup.ai/ai-strategy-session');
     $add_hsc('m_cf7', 'CF7 Shortcode', 'modal_sec', '[contact-form-7 id="123" title="Book a Call"]');
     $add_hsc('m_ben_title', 'Benefits Title', 'modal_sec', 'What You’ll Get on This Call');
     $add_hsc('m_ben_list', 'Benefits List (One per line)', 'modal_sec', "Identify exactly where your business is losing time, money, and efficiency\nPinpoint where AI employees can replace or support your current team\nMap out every opportunity to increase profit and reduce operating costs\nBreak down how AI applies across your sales, marketing, operations, and client service\nWalk away with a clear execution plan tailored specifically to your business\nDiscover which roles and operations are most immediately replaceable or amplifiable", 'textarea');

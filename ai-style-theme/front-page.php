@@ -27,7 +27,7 @@ get_header();
                 <?php echo esc_html( get_theme_mod( 'hero_btn', 'Book a Strategy Call' ) ); ?>
             </a>
         </div>
-        <div style="margin-top: 6rem; opacity: 0.4; text-transform: uppercase; letter-spacing: 0.25em; font-size: 0.8rem; font-weight: 700;">Scroll to Explore</div>
+        <div style="margin-top: 6rem; opacity: 0.4; text-transform: uppercase; letter-spacing: 0.25em; font-size: 0.8rem; font-weight: 800;">Scroll to Explore</div>
     </div>
 </section>
 
@@ -64,17 +64,21 @@ get_header();
             </div>
             <div>
                 <div style="font-size: 1.25rem; opacity: 0.8; font-weight: 300; margin-bottom: 3.5rem;">
-                    <?php echo wp_kses_post( get_theme_mod('div_text', 'We do not just build AI systems for you. We also give you the capability to build and control them internally.') ); ?>
+                    <?php echo wp_kses_post( get_theme_mod( 'div_text', 'We do not just build AI systems for you. We also give you the capability to build and control them internally.' ) ); ?>
                 </div>
                 <ul style="list-style: none; padding: 0; font-size: 1.15rem; opacity: 0.75;">
                     <?php
-                    $div_list = explode("\n", get_theme_mod('div_list', "Designing AI employees for specific roles\nImplementing AI workflows across departments\nIntegrating tools, systems, and custom builds\nScaling AI inside your company without breaking operations\nTurning AI into a long-term asset, not a one-time project"));
+                    $div_list_raw = get_theme_mod('div_list', "Designing AI employees for specific roles\nImplementing AI workflows across departments\nIntegrating tools, systems, and custom builds\nScaling AI inside your company without breaking operations\nTurning AI into a long-term asset, not a one-time project");
+                    $div_list = explode("\n", $div_list_raw);
                     foreach ($div_list as $item) {
                         if (trim($item)) echo '<li style="margin-bottom: 1.5rem; display: flex; align-items: center;"><span style="color: var(--accent-teal); margin-right: 1.5rem; font-size: 1.2rem;">✦</span> ' . esc_html(trim($item)) . '</li>';
                     }
                     ?>
                 </ul>
             </div>
+        </div>
+        <div class="text-center" style="margin-top: 5rem;">
+            <a href="#services" class="btn btn-outline">See Our Services</a>
         </div>
     </div>
 </section>
@@ -161,7 +165,7 @@ get_header();
 <section class="section section-alt flat-border">
     <div class="container text-center">
         <h2 class="section-label" style="display: inline-block;"><?php echo esc_html( get_theme_mod('scale_title', 'Every Level. Every Scale.') ); ?></h2>
-        <div class="dashboard-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+        <div class="dashboard-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
             <?php
             $scale_defaults = array(
                 1 => array('t' => 'Solopreneur', 'd' => 'Maximum Leverage. You do not need a team. You need AI working for you around the clock.'),
