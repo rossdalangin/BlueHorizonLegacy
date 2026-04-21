@@ -39,9 +39,6 @@ get_header();
                 <p style="font-size: 1.1rem; line-height: 1.8;">
                     <?php echo wp_kses_post( get_theme_mod( 'about_content', 'The AI Agency Group is a global AI infrastructure and implementation firm that builds AI departments and AI employees that replace work, reduce costs, and increase output across your business.' ) ); ?>
                 </p>
-                <p style="margin-top: 2rem;">
-                    With 102 partners spread out all around the world, we serve companies of all sizes all over the globe, from solopreneurs to enterprise organizations and government.
-                </p>
             </div>
         </div>
     </div>
@@ -50,7 +47,9 @@ get_header();
 <!-- Services Grid -->
 <section id="features" class="section section-alt flat-border">
     <div class="container">
-        <h2 class="section-title">How We Can Help You</h2>
+        <h2 class="section-title">
+            <?php echo esc_html( get_theme_mod( 'services_title', 'How We Can Help You' ) ); ?>
+        </h2>
         <div class="dashboard-grid">
             <div class="dashboard-card">
                 <div class="card-icon">01</div>
@@ -89,8 +88,12 @@ get_header();
 <!-- Call to Action -->
 <section id="cta" class="section flat-border">
     <div class="container text-center">
-        <h2 style="margin-bottom: 1.5rem;">Ready to Work With Us?</h2>
-        <p style="margin-bottom: 3rem; opacity: 0.8; max-width: 600px; margin-left: auto; margin-right: auto;">The businesses winning right now are not smarter. They are better armed. Let us build your AI department.</p>
+        <h2 style="margin-bottom: 1.5rem;">
+            <?php echo esc_html( get_theme_mod( 'cta_title', 'Ready to Work With Us?' ) ); ?>
+        </h2>
+        <p style="margin-bottom: 3rem; opacity: 0.8; max-width: 600px; margin-left: auto; margin-right: auto;">
+            <?php echo wp_kses_post( get_theme_mod( 'cta_content', 'The businesses winning right now are not smarter. They are better armed. Let us build your AI department.' ) ); ?>
+        </p>
         <a href="#" class="btn btn-teal open-modal">Book a Strategy Call</a>
     </div>
 </section>
