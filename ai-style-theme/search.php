@@ -32,7 +32,7 @@ get_header();
                         <div class="entry-summary" style="margin: 1.5rem 0; opacity: 0.8;">
                             <?php the_excerpt(); ?>
                         </div>
-                        <a href="<?php echo esc_url( get_permalink() ); ?>" class="btn btn-outline-gold" style="padding: 0.75rem 1.5rem; font-size: 0.8rem;">Read More</a>
+                        <a href="<?php echo esc_url( get_permalink() ); ?>" class="btn btn-outline" style="padding: 0.75rem 1.5rem; font-size: 0.8rem;">Read More</a>
                     </article>
                     <?php
                 endwhile;
