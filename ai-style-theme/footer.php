@@ -63,6 +63,15 @@
         <span class="close-modal" id="strategyModalClose">&times;</span>
 
         <div class="modal-header-clean">
+            <?php
+            $m_vid = get_theme_mod('m_video', 'https://assets.cdn.filesafe.space/TRgTosvlNzRa9OIbzIzw/media/69d6557da64a04ba15df08cc.mp4');
+            if ($m_vid): ?>
+            <div style="margin-bottom: 30px;">
+                <video autoplay muted loop playsinline style="width: 100%; max-height: 400px; object-fit: cover;">
+                    <source src="<?php echo esc_url($m_vid); ?>" type="video/mp4">
+                </video>
+            </div>
+            <?php endif; ?>
             <h2 class="modal-main-title"><?php echo esc_html(get_theme_mod('m_title', 'SECURE YOUR AI STRATEGY SESSION')); ?></h2>
             <p class="modal-subtitle"><?php echo esc_html(get_theme_mod('m_sub', '15–30 Minutes · No Obligation · Leave with a Clear Plan')); ?></p>
         </div>
@@ -98,73 +107,64 @@
 
                     <!-- Who This Is For -->
                     <div class="modal-info-section">
-                        <p class="section-label" style="color:#000 !important; font-size: 2.5rem; font-family: var(--font-heading);">Who This <span class="accent" style="color:var(--accent-blue);">Is For</span></p>
+                        <p class="section-label" style="color:#000 !important; font-size: 2.5rem; font-family: var(--font-heading);"><?php echo esc_html(get_theme_mod('m_for_title', 'Who This Is For')); ?></p>
                         <div class="section-rule" style="background:var(--accent-blue); margin-top:-1.5rem;"></div>
                         <div class="for-grid">
-                            <div class="who-card">
-                                <span class="who-icon">↑</span>
-                                <div class="who-title">Increase Profitability</div>
-                                <div class="who-desc">Business owners who want more margin without more people or more complexity</div>
-                            </div>
-                            <div class="who-card">
-                                <span class="who-icon">↓</span>
-                                <div class="who-title">Reduce Operating Costs</div>
-                                <div class="who-desc">Executives looking to cut overhead without cutting performance or output</div>
-                            </div>
-                            <div class="who-card">
-                                <span class="who-icon">⚡</span>
-                                <div class="who-title">Improve Efficiency</div>
-                                <div class="who-desc">Leaders who want faster execution across every department without adding complexity</div>
-                            </div>
-                            <div class="who-card">
-                                <span class="who-icon">→</span>
-                                <div class="who-title">Scale Without Bloat</div>
-                                <div class="who-desc">Operators ready to grow without adding unnecessary overhead or headcount</div>
-                            </div>
+                            <?php
+                            $for_raw = get_theme_mod('m_for_items', "↑|Increase Profitability|Business owners who want more margin without more people or more complexity\n↓|Reduce Operating Costs|Executives looking to cut overhead without cutting performance or output\n⚡|Improve Efficiency|Leaders who want faster execution across every department without adding complexity\n→|Scale Without Bloat|Operators ready to grow without adding unnecessary overhead or headcount");
+                            $for_lines = explode("\n", $for_raw);
+                            foreach ($for_lines as $line) {
+                                $parts = explode('|', $line);
+                                if (count($parts) >= 3) {
+                                    echo '<div class="who-card">';
+                                    echo '<span class="who-icon">'.esc_html($parts[0]).'</span>';
+                                    echo '<div class="who-title">'.esc_html($parts[1]).'</div>';
+                                    echo '<div class="who-desc">'.esc_html($parts[2]).'</div>';
+                                    echo '</div>';
+                                }
+                            }
+                            ?>
                         </div>
                     </div>
 
                     <!-- Reinforcement -->
                     <div class="modal-info-section">
-                        <p class="section-label" style="color:#000 !important; font-size: 2.5rem; font-family: var(--font-heading);">Most Companies <span class="accent" style="color:var(--accent-gold);">Use AI Wrong</span></p>
+                        <p class="section-label" style="color:#000 !important; font-size: 2.5rem; font-family: var(--font-heading);"><?php echo esc_html(get_theme_mod('m_comp_title', 'Most Companies Use AI Wrong')); ?></p>
                         <div class="section-rule" style="background:var(--accent-gold); margin-top:-1.5rem;"></div>
                         <div class="contrast-grid">
-                            <div class="contrast-cell">
-                                <span class="contrast-label label-typical">Typical Approach</span>
-                                <p style="color:#555; text-transform:none; letter-spacing:0; font-weight:400; font-size:1rem;">Generic AI overview with no direct application to your business, your team, or your numbers</p>
-                            </div>
-                            <div class="contrast-cell is-this">
-                                <span class="contrast-label label-this">This Session</span>
-                                <p style="color:#000; text-transform:none; letter-spacing:0; font-weight:400; font-size:1rem;">Specific to your business, your team structure, your cost model, and your revenue opportunity</p>
-                            </div>
-                            <div class="contrast-cell">
-                                <span class="contrast-label label-typical">Typical Approach</span>
-                                <p style="color:#555; text-transform:none; letter-spacing:0; font-weight:400; font-size:1rem;">AI tools that save small amounts of time on low-leverage tasks that barely move the needle</p>
-                            </div>
-                            <div class="contrast-cell is-this">
-                                <span class="contrast-label label-this">This Session</span>
-                                <p style="color:#000; text-transform:none; letter-spacing:0; font-weight:400; font-size:1rem;">Focused entirely on where AI actually impacts profit, operating costs, and execution at scale</p>
-                            </div>
-                            <div class="contrast-cell">
-                                <span class="contrast-label label-typical">Typical Approach</span>
-                                <p style="color:#555; text-transform:none; letter-spacing:0; font-weight:400; font-size:1rem;">You walk away with a generic roadmap that could apply to any company in any industry</p>
-                            </div>
-                            <div class="contrast-cell is-this">
-                                <span class="contrast-label label-this">This Session</span>
-                                <p style="color:#000; text-transform:none; letter-spacing:0; font-weight:400; font-size:1rem;">You walk away with a clear, tailored execution plan built specifically around your business</p>
-                            </div>
+                            <?php
+                            $comp_raw = get_theme_mod('m_comp_items', "Generic AI overview with no direct application to your business, your team, or your numbers|Specific to your business, your team structure, your cost model, and your revenue opportunity\nAI tools that save small amounts of time on low-leverage tasks that barely move the needle|Focused entirely on where AI actually impacts profit, operating costs, and execution at scale\nYou walk away with a generic roadmap that could apply to any company in any industry|You walk away with a clear, tailored execution plan built specifically around your business");
+                            $comp_lines = explode("\n", $comp_raw);
+                            foreach ($comp_lines as $line) {
+                                $parts = explode('|', $line);
+                                if (count($parts) >= 2) {
+                                    echo '<div class="contrast-cell">';
+                                    echo '<span class="contrast-label label-typical">Typical Approach</span>';
+                                    echo '<p style="color:#555; text-transform:none; letter-spacing:0; font-weight:400; font-size:1rem;">'.esc_html($parts[0]).'</p>';
+                                    echo '</div>';
+                                    echo '<div class="contrast-cell is-this">';
+                                    echo '<span class="contrast-label label-this">This Session</span>';
+                                    echo '<p style="color:#000; text-transform:none; letter-spacing:0; font-weight:400; font-size:1rem;">'.esc_html($parts[1]).'</p>';
+                                    echo '</div>';
+                                }
+                            }
+                            ?>
                         </div>
                     </div>
 
                     <!-- Cost of Delay -->
                     <div class="modal-info-section">
-                        <p class="section-label" style="color:#000 !important; font-size: 2.5rem; font-family: var(--font-heading);">Every Month You <span class="accent" style="color:#ff3b30;">Delay Has a Cost</span></p>
+                        <p class="section-label" style="color:#000 !important; font-size: 2.5rem; font-family: var(--font-heading);"><?php echo esc_html(get_theme_mod('m_delay_title', 'Every Month You Delay Has a Cost')); ?></p>
                         <div class="section-rule" style="background:#ff3b30; margin-top:-1.5rem;"></div>
-                        <p class="modal-section-desc">Most companies use AI to save small amounts of time. This session focuses on using AI where it actually impacts profit, cost, and execution. That gap compounds every month it goes unaddressed.</p>
+                        <p class="modal-section-desc"><?php echo wp_kses_post(get_theme_mod('m_delay_desc', 'Most companies use AI to save small amounts of time. This session focuses on using AI where it actually impacts profit, cost, and execution. That gap compounds every month it goes unaddressed.')); ?></p>
                         <ol class="cost-list">
-                            <li>You continue paying for work AI could handle at a fraction of the cost</li>
-                            <li>Your competitors move faster and operate more efficiently every quarter</li>
-                            <li>The margin between leaders and followers widens and accelerates</li>
+                            <?php
+                            $delay_raw = get_theme_mod('m_delay_list', "You continue paying for work AI could handle at a fraction of the cost\nYour competitors move faster and operate more efficiently every quarter\nThe margin between leaders and followers widens and accelerates");
+                            $delay_lines = explode("\n", $delay_raw);
+                            foreach ($delay_lines as $line) {
+                                if (trim($line)) echo '<li>'.esc_html(trim($line)).'</li>';
+                            }
+                            ?>
                         </ol>
                     </div>
 

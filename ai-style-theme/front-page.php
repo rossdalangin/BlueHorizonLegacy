@@ -10,6 +10,14 @@ get_header();
 
 <!-- Hero Section -->
 <section class="hero">
+    <?php
+    $hero_vid = get_theme_mod('hero_video', 'https://assets.cdn.filesafe.space/TRgTosvlNzRa9OIbzIzw/media/69d528baad0e3e32704ebe43.mp4');
+    if ($hero_vid): ?>
+    <video autoplay muted loop playsinline class="hero-video-bg">
+        <source src="<?php echo esc_url($hero_vid); ?>" type="video/mp4">
+    </video>
+    <?php endif; ?>
+
     <div class="container text-center">
         <p class="hero-eyebrow"><?php echo esc_html( get_theme_mod( 'hero_top', 'OPERATING IN 72 COUNTRIES  |  102 GLOBAL PARTNERS' ) ); ?></p>
         <h1 class="hero-headline">
@@ -54,7 +62,7 @@ get_header();
     </div>
 </section>
 
-<!-- Implementation + Training Section (Division) -->
+<!-- Implementation + Training Section -->
 <section class="foxx-section">
     <div class="container">
         <div class="grid-two">
@@ -86,13 +94,12 @@ get_header();
 <!-- Industries Section -->
 <section class="audience-section">
     <div class="container text-center">
-        <h2 class="section-label" style="display: inline-block; color: #000; font-family: var(--font-heading);"><?php echo esc_html( get_theme_mod('ind_title', 'Trusted Across Industries') ); ?></h2>
-        <div class="section-rule" style="margin: -2.5rem auto 3.5rem; background: #000;"></div>
-        <div class="industry-grid">
+        <p class="clients-label"><?php echo esc_html( get_theme_mod('ind_title', 'Trusted Across Industries') ); ?></p>
+        <div class="clients-grid">
             <?php
             $ind_raw = get_theme_mod('ind_list', 'Government, Solopreneurs, Insurance, Private Equity, M&A, Mining, Real Estate, Finance, Healthcare, Legal, E-Commerce, Technology, Speaking, Coaching, Trades, Small Business, Manufacturing, Corporate');
             $ind = explode(',', $ind_raw);
-            foreach ($ind as $i) echo '<span>'.esc_html(trim($i)).'</span> ';
+            foreach ($ind as $i) echo '<div class="client-item">'.esc_html(trim($i)).'</div>';
             ?>
         </div>
     </div>
@@ -118,7 +125,7 @@ get_header();
                 6 => array('t' => 'AI TRAINING', 'd' => 'We train your people to design, deploy, and manage AI themselves. We make your team dangerous with the most powerful weapon in business.'),
                 7 => array('t' => 'TOOL ACTIVATION', 'd' => 'You have the subscriptions. We turn them into results. We activate, integrate, and implement the AI tools your business already owns so they drive revenue.'),
                 8 => array('t' => 'AI YOURSELF', 'd' => 'Your personal AI. Built around you. Your voice, your knowledge, your decisions. Amplify who you are at every scale.'),
-                9 => array('t' => 'AI YOUR COMPANY', 'd' => 'We build a company-wide AI knowledge base trained on your entire business. Your processes, your IP, your voice, your decisions — all encoded into a single AI system accessible to every employee. Every department runs faster.'),
+                9 => array('t' => 'AI YOUR COMPANY', 'd' => 'We build a company-wide AI knowledge base trained on your entire business. Your processes, your IP, your voice, your decisions — all encoded into a single AI system accessible to every employee.'),
                 10 => array('t' => 'CUSTOM SYSTEM', 'd' => 'Want to own your own AI system? We build it for you from the ground up. Your brand. Your logic. Your rules.'),
                 11 => array('t' => 'SELL KNOWLEDGE', 'd' => 'We build an AI system trained on your knowledge, frameworks, and experience — then help you sell it.'),
                 12 => array('t' => 'AI LEGACY', 'd' => 'What if your knowledge never disappeared? We build your AI Legacy — a permanent AI trained on everything you know.')
@@ -171,7 +178,7 @@ get_header();
     <div class="container text-center">
         <h2 class="section-label" style="display: inline-block; color: #000;"><?php echo esc_html( get_theme_mod('scale_title', "EVERY LEVEL.\nEVERY SCALE.") ); ?></h2>
         <div class="section-rule" style="margin: -2.5rem auto 3.5rem; background: #000;"></div>
-        <div class="dashboard-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); border-color: rgba(0,0,0,0.1);">
+        <div class="dashboard-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); border-color: rgba(0,0,0,0.1);">
             <?php
             $scale_defaults = array(
                 1 => array('t' => 'MAXIMUM LEVERAGE', 'd' => 'Solopreneur. You do not need a team. You need AI working for you around the clock. We build your personal AI department so you operate like a company ten times your size.'),

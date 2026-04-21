@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, { threshold: 0.05 });
 
-    document.querySelectorAll('.section, .who-section, .services-section, .partner-section, .foxx-section, .proof-section').forEach(section => {
+    document.querySelectorAll('.section, .who-section, .services-section, .partner-section, .foxx-section, .proof-section, .audience-section').forEach(section => {
         section.style.opacity = 0;
         section.style.transform = 'translateY(40px)';
         section.style.transition = 'all 1s cubic-bezier(0.165, 0.84, 0.44, 1)';
